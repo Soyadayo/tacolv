@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Soya Arakawa – Artist Portfolio | Performance, Installation, Drawing</title>
+  <title>Soya Arakawa – Playful Artist Portfolio</title>
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Soya Arakawa, Japanese artist in Germany, creates performance art, installations, and drawings blending choreography and contemporary art.">
-  <meta name="keywords" content="Soya Arakawa, performance art, installation art, contemporary drawing, improvisational music, Japanese artist, Krefeld, Düsseldorf, interdisciplinary art, live art, インスタレーション, 現代美術, パフォーマンス, アーティスト">
+  <meta name="description" content="Soya Arakawa, Japanese artist in Germany, creates vibrant performance art, installations, paintings, and drawings with a touch of whimsy.">
+  <meta name="keywords" content="Soya Arakawa, performance art, installation art, contemporary painting, contemporary drawing, improvisational music, Japanese artist, Krefeld, Düsseldorf, interdisciplinary art, live art, インスタレーション, 現代美術, パフォーマンス, アーティスト">
   <meta name="author" content="Soya Arakawa">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.tacolv.org/">
 
-  <!-- Open Graph (Facebook etc.) -->
-  <meta property="og:title" content="Soya Arakawa – Performance & Installation Artist">
-  <meta property="og:description" content="Explore Soya Arakawa's portfolio of performance art, installations, drawings, and improvisational music. Based in Krefeld, Germany.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Soya Arakawa – Playful Performance & Art">
+  <meta property="og:description" content="Discover Soya Arakawa's vibrant portfolio of performances, installations, paintings, and drawings. Based in Krefeld, Germany.">
   <meta property="og:image" content="https://www.tacolv.org/portrait.jpg">
   <meta property="og:url" content="https://www.tacolv.org/">
   <meta property="og:type" content="website">
@@ -21,12 +21,12 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Soya Arakawa – Performance & Installation Artist">
-  <meta name="twitter:description" content="Japanese artist in Germany specializing in performance, installations, and drawings. Visit for portfolio and updates.">
+  <meta name="twitter:title" content="Soya Arakawa – Playful Performance & Art">
+  <meta name="twitter:description" content="Japanese artist in Germany creating performance, installations, paintings, and drawings. Visit for a playful art experience.">
   <meta name="twitter:image" content="https://www.tacolv.org/portrait.jpg">
   <meta name="twitter:site" content="@soya_ar.tacolv">
 
-  <!-- Structured Data (Schema.org) -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,7 +39,7 @@
       "addressLocality": "Krefeld",
       "addressCountry": "Germany"
     },
-    "description": "Soya Arakawa is a Japanese artist based in Germany, specializing in performance art, installations, drawings, and improvisational music.",
+    "description": "Soya Arakawa is a Japanese artist based in Germany, specializing in performance art, installations, paintings, drawings, and improvisational music.",
     "sameAs": [
       "https://www.instagram.com/soya_ar.tacolv"
     ],
@@ -48,27 +48,35 @@
   </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Reference to sitemap for crawlers -->
-  <!-- Create sitemap.xml and host at https://www.tacolv.org/sitemap.xml -->
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f8f7f3;
+      background: linear-gradient(135deg, #f8f7f3 0%, #e6e0fa 100%);
       color: #2b2b2b;
       scroll-behavior: smooth;
+      position: relative;
+      overflow-x: hidden;
     }
     h1, h2, h3 {
-      font-family: 'Noto Serif', serif;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 0.05em;
     }
-    .gallery img {
-      transition: transform 0.3s ease, opacity 0.3s ease;
+    h1 {
+      font-size: 3.5rem;
+      background: linear-gradient(to right, #2563eb, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
-      opacity: 0.9;
+    .gallery img, .painting img, .drawing img {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 8px;
+    }
+    .gallery img:hover, .painting img:hover, .drawing img:hover {
+      transform: scale(1.1) rotate(2deg);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       cursor: pointer;
     }
     #lightbox {
@@ -78,7 +86,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.85);
       align-items: center;
       justify-content: center;
       z-index: 1000;
@@ -86,27 +94,33 @@
     #lightbox img {
       max-width: 90%;
       max-height: 90%;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+      animation: popIn 0.3s ease;
     }
     #lightbox .close {
       position: absolute;
       top: 20px;
-      right: 20px;
-      color: white;
-      font-size: 2rem;
+      right: 30px;
+      color: #fff;
+      font-size: 2.5rem;
       cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    #lightbox .close:hover {
+      color: #ec4899;
     }
     .video-grid iframe {
       transition: transform 0.3s ease;
+      border-radius: 8px;
     }
     .video-grid iframe:hover {
-      transform: scale(1.02);
+      transform: scale(1.05);
     }
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 0.8s ease-out forwards;
+      transform: translateY(30px);
+      animation: fadeIn 1s ease-out forwards;
     }
     @keyframes fadeIn {
       to {
@@ -114,82 +128,229 @@
         transform: translateY(0);
       }
     }
+    @keyframes popIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
     .portrait {
-      max-width: 50%;
+      max-width: 60%;
       height: auto;
-      border-radius: 10px;
-      border: 1px solid #d1d5db;
+      border-radius: 15px;
+      border: 3px solid #ec4899;
       display: block;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 1rem auto;
+      transition: transform 0.3s ease;
+    }
+    .portrait:hover {
+      transform: rotate(-3deg);
     }
     .download-links a i {
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
     .download-links a:hover i {
+      color: #ec4899;
+      transform: scale(1.2);
+    }
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #2563eb;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .cursor.grow {
+      transform: scale(2);
+      background-color: rgba(236, 72, 153, 0.3);
+    }
+    .section-title {
+      font-family: 'Space Mono', monospace;
+      text-transform: uppercase;
       color: #2563eb;
+      letter-spacing: 0.1em;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(to right, #2563eb, #ec4899);
+    }
+    .gallery div, .painting div, .drawing div {
+      position: relative;
+    }
+    .gallery p, .painting p, .drawing p {
+      font-size: 0.875rem;
+      color: #4b5563;
+      margin-top: 0.5rem;
+      text-align: center;
     }
     @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
       .portrait {
         max-width: 80%;
       }
       .video-grid iframe {
-        height: 200px;
+        height: 180px;
+      }
+      .gallery, .painting, .drawing {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
   </style>
 </head>
 <body class="antialiased">
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+
   <!-- Main Content -->
-  <div class="max-w-4xl mx-auto px-4 py-8 fade-in">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">Soya Arakawa / 荒川創也</h1>
+  <div class="max-w-5xl mx-auto px-6 py-12 fade-in">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6 text-center">Soya Arakawa / 荒川創也</h1>
 
     <!-- Social Links -->
-    <p class="text-lg mb-4">
-      <strong>For recent exhibitions and updates, visit my Instagram:</strong><br>
-      <a href="https://www.instagram.com/soya_ar.tacolv" target="_blank" class="text-blue-600 hover:underline">@soya_ar.tacolv</a>
+    <p class="text-lg mb-6 text-center">
+      <strong>Follow the journey on Instagram:</strong><br>
+      <a href="https://www.instagram.com/soya_ar.tacolv" target="_blank" class="text-blue-600 hover:text-pink-500 transition">@soya_ar.tacolv</a>
     </p>
 
     <!-- Bio and Portrait -->
-    <div class="mb-8 md:flex md:space-x-6">
+    <div class="mb-12 md:flex md:space-x-8 fade-in">
       <div class="md:w-1/2">
         <p><strong>Born:</strong> 1984, Hamamatsu, Japan<br>
         <strong>Lives and works in:</strong> Krefeld, Germany</p>
         <p class="mt-4 text-gray-700 leading-relaxed">
-          Soya Arakawa, born in Hamamatsu, Japan, in 1984, is an artist based in Krefeld, Germany. Trained at Kanazawa College of Art and Kunstakademie Düsseldorf under Prof. Rita McBride, he explores sculpture, drawing, installation, and performance. His practice integrates choreography with spatial composition, creating dynamic installations and performance scores that often form the basis for live interdisciplinary works, where he performs as a singer, dancer, or instrumentalist. Arakawa’s art engages with themes of cultural identity, fiction, and self-mythology, blending contemporary and experimental forms.
+          Soya Arakawa, born in Hamamatsu, Japan, in 1984, is an artist weaving magic in Krefeld, Germany. Trained at Kanazawa College of Art and Kunstakademie Düsseldorf under Prof. Rita McBride, he dances between sculpture, painting, drawing, installation, and performance. His works blend choreography with spatial play, crafting vibrant installations and performance scores that come alive through song, dance, or music. Arakawa’s art is a playful exploration of cultural identity, fiction, and self-mythology, inviting you into a world of contemporary whimsy.
         </p>
       </div>
-      <div class="md:w-1/2 mt-4 md:mt-0">
-        <img src="portrait.jpg" alt="Portrait of Soya Arakawa, Japanese artist in Krefeld" class="portrait">
+      <div class="md:w-1/2 mt-6 md:mt-0">
+        <img src="images/portrait/soya-arakawa-portrait-2025.jpg" alt="Portrait of Soya Arakawa, Japanese artist in Krefeld" class="portrait">
+        <p class="text-sm mt-2 text-gray-600 text-center">Fotocredit Cheyenne Än Oswald</p>
       </div>
     </div>
 
     <!-- Downloads -->
-    <h2 class="text-2xl font-semibold mb-4">Downloads</h2>
-    <div class="bg-gray-100 p-4 rounded-lg mb-8 download-links">
-      <ul class="space-y-2">
-        <li><a href="cv.pdf" download class="text-blue-600 hover:underline"><i class="fas fa-file-pdf mr-2"></i>Curriculum Vitae (PDF)</a></li>
-        <li><a href="portfolio.pdf" download class="text-blue-600 hover:underline"><i class="fas fa-folder-open mr-2"></i>Portfolio (PDF)</a></li>
+    <h2 class="text-2xl section-title mb-6">Downloads</h2>
+    <div class="bg-white bg-opacity-80 p-6 rounded-lg mb-12 shadow-lg download-links fade-in">
+      <ul class="space-y-3">
+        <li><a href="cv.pdf" download class="text-blue-600 hover:text-pink-500"><i class="fas fa-file-pdf mr-2"></i>Curriculum Vitae (PDF)</a></li>
+        <li><a href="portfolio.pdf" download class="text-blue-600 hover:text-pink-500"><i class="fas fa-folder-open mr-2"></i>Portfolio (PDF)</a></li>
       </ul>
     </div>
 
-    <!-- Gallery -->
-    <h2 class="text-2xl font-semibold mb-4">Selected Works</h2>
-    <div class="gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-      <img src="work1.jpg" alt="Performance art by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="work2.jpg" alt="Installation artwork by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="work3.jpg" alt="Contemporary drawing by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="work4.jpg" alt="Sculpture by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="work5.jpg" alt="Interdisciplinary art by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="work6.jpg" alt="Performance score by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="work7.jpg" alt="Installation by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="work8.jpg" alt="Drawing by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="work9.jpg" alt="Live art by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="work10.jpg" alt="Choreographic installation by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="work11.jpg" alt="Contemporary art by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="work12.jpg" alt="Performance artwork by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="work13.jpg" alt="Soya Arakawa interdisciplinary work" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="work14.jpg" alt="Installation art by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+    <!-- Paintings -->
+    <h2 class="text-2xl section-title mb-6">Paintings</h2>
+    <div class="painting grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12 fade-in">
+      <div>
+        <img src="images/paintings/soya-arakawa-painting-abstract-flow-2023.jpg" alt="Abstract painting by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Abstract Flow, 2023, Acrylic on Canvas</p>
+      </div>
+      <div>
+        <img src="images/paintings/soya-arakawa-painting-mythic-layers-2022.jpg" alt="Colorful painting by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Mythic Layers, 2022, Oil on Canvas</p>
+      </div>
+      <div>
+        <img src="images/paintings/soya-arakawa-painting-choreographed-colors-2024.jpg" alt="Experimental painting by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Choreographed Colors, 2024, Mixed Media</p>
+      </div>
+      <div>
+        <img src="images/paintings/soya-arakawa-painting-echoes-of-motion-2023.jpg" alt="Vibrant painting by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Echoes of Motion, 2023, Acrylic</p>
+      </div>
+    </div>
+
+    <!-- Drawings -->
+    <h2 class="text-2xl section-title mb-6">Drawings</h2>
+    <div class="drawing grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12 fade-in">
+      <div>
+        <img src="images/drawings/soya-arakawa-drawing-whimsical-lines-2023.jpg" alt="Ink drawing by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Whimsical Lines, 2023, Ink on Paper</p>
+      </div>
+      <div>
+        <img src="images/drawings/soya-arakawa-drawing-fleeting-shadows-2022.jpg" alt="Pencil sketch by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Fleeting Shadows, 2022, Pencil</p>
+      </div>
+      <div>
+        <img src="images/drawings/soya-arakawa-drawing-dance-of-forms-2024.jpg" alt="Charcoal drawing by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Dance of Forms, 2024, Charcoal</p>
+      </div>
+      <div>
+        <img src="images/drawings/soya-arakawa-drawing-fragmented-myths-2023.jpg" alt="Mixed media drawing by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Fragmented Myths, 2023, Mixed Media</p>
+      </div>
+    </div>
+
+    <!-- Selected Works -->
+    <h2 class="text-2xl section-title mb-6">Selected Works</h2>
+    <div class="gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12 fade-in">
+      <div>
+        <img src="images/works/soya-arakawa-work-bellin-part-2023.jpg" alt="Performance art by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Bellin (Part), 2023</p>
+      </div>
+      <div>
+        <img src="images/works/soya-arakawa-work-kagami-ita-2023.jpg" alt="Installation artwork by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn</p>
+      </div>
+      <div>
+        <img src="images/works/soya-arakawa-work-kagami-ita-2023-2.jpg" alt="Contemporary drawing by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn</p>
+      </div>
+      <div>
+        <img src="images/works/soya-arakawa-work-kagami-ita-2023-3.jpg" alt="Sculpture by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn</p>
+      </div>
+      <div>
+        <img src="images/works/soya-arakawa-work-longer-salon-2023.jpg" alt="Interdisciplinary art by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Longer Salon, 2023</p>
+      </div>
+      <div>
+        <img src="images/works/soya-arakawa-work-rarika-report-2023.jpg" alt="Performance score by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Rarika Report, 2023, Fotocredit Lisa Klosterkötter</p>
+      </div>
+      <div>
+        <img src="images/works/soya-arakawa-work-rarika-report-2023-2.jpg" alt="Installation by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Rarika Report, 2023, Fotocredit Lisa Klosterkötter</p>
+      </div>
+      <div>
+        <img src="images/works/soya-arakawa-work-rarika-report-2023-3.jpg" alt="Drawing by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Rarika Report, 2023</p>
+      </div>
+      <div>
+        <img src="images/works/soya-arakawa-work-tomodachi-to-2023.jpg" alt="Live art by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Tomodachi to, Installationsansicht, Foto Katja Illner</p>
+      </div>
+      <div>
+        <img src="images/works/soya-arakawa-work-akechan-2025.jpg" alt="Choreographic installation by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Akechan, 2025, Fotocredit Maximilian Kandora</p>
+      </div>
+      <div>
+        <img src="images/works/soya-arakawa-work-bellin-part-2023-2.jpg" alt="Contemporary art by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Bellin (Part), 2023</p>
+      </div>
+      <div>
+        <img src="images/works/soya-arakawa-work-akechan-2025-2.jpg" alt="Performance artwork by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Akechan, 2025, Fotocredit Maximilian Kandora</p>
+      </div>
+      <div>
+        <img src="images/works/soya-arakawa-work-akechan-2025-3.jpg" alt="Soya Arakawa interdisciplinary work" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Akechan, 2025, Fotocredit Maximilian Kandora</p>
+      </div>
+      <div>
+        <img src="images/works/soya-arakawa-work-akechan-2025-4.jpg" alt="Installation art by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
+        <p class="text-sm mt-2 text-gray-600">Akechan, 2025, Fotocredit Maximilian Kandora</p>
+      </div>
     </div>
 
     <!-- Lightbox -->
@@ -199,8 +360,8 @@
     </div>
 
     <!-- Performance Videos -->
-    <h2 class="text-2xl font-semibold mb-4">Performance Videos</h2>
-    <div class="video-grid grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+    <h2 class="text-2xl section-title mb-6">Performance Videos</h2>
+    <div class="video-grid grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 fade-in">
       <div class="video">
         <iframe src="https://www.youtube.com/embed/9EqI5Vuyzrc" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
@@ -213,37 +374,32 @@
       <div class="video">
         <iframe src="https://www.youtube.com/embed/-_ATdc7x4OQ" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
-      <div class="video">
-        <iframe src="https://player.vimeo.com/video/889123965" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="video">
-        <iframe src="https://player.vimeo.com/video/613580291" frameborder="0" allowfullscreen loading="lazy"></iframe>
-      </div>
     </div>
 
     <!-- Contact Form -->
-    <h2 class="text-2xl font-semibold mb-4">Contact</h2>
-    <div class="max-w-lg mx-0 mr-auto bg-gray-100 p-6 rounded-lg mb-4">
-      <div action="https://formspree.io/f/mnqepkqd" method="POST" class="space-y-4">
+    <h2 class="text-2xl section-title mb-6">Get in Touch</h2>
+    <div class="max-w-lg mx-0 mr-auto bg-white bg-opacity-80 p-8 rounded-lg mb-12 shadow-lg fade-in">
+      <div action="https://formspree.io/f/mnqepkqd" method="POST" class="space-y-6">
         <div>
           <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-          <input type="text" id="name" name="name" required class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500">
         </div>
         <div>
           <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-          <input type="email" id="email" name="_replyto" required class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <input type="email" id="email" name="_replyto" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500">
         </div>
         <div>
           <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-          <textarea id="message" name="message" rows="5" required class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+          <textarea id="message" name="message" rows="5" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"></textarea>
         </div>
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Send</button>
+        <button type="submit" class="bg-gradient-to-r from-blue-600 to-pink-500 text-white px-6 py-3 rounded-md hover:from-pink-500 hover:to-blue-600 transition">Send a Spark</button>
       </div>
     </div>
-    <p class="text-sm text-gray-500">© Soya Arakawa 2025</p>
+    <p class="text-sm text-gray-500 text-center">© Soya Arakawa 2025</p>
   </div>
 
   <script>
+    // Lightbox functionality
     function openLightbox(src) {
       const lightbox = document.getElementById('lightbox');
       const img = document.getElementById('lightbox-img');
@@ -261,11 +417,25 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.animation = 'fadeIn 0.8s ease-out forwards';
+          entry.target.style.animation = 'fadeIn 1s ease-out forwards';
         }
       });
     }, { threshold: 0.1 });
     fadeIns.forEach(el => observer.observe(el));
+
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = `${e.clientX - 10}px`;
+      cursor.style.top = `${e.clientY - 10}px`;
+    });
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.tagName === 'A' || e.target.tagName === 'IMG' || e.target.tagName === 'BUTTON') {
+        cursor.classList.add('grow');
+      } else {
+        cursor.classList.remove('grow');
+      }
+    });
   </script>
 </body>
 </html>
