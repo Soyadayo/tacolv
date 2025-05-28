@@ -108,6 +108,41 @@
       will-change: transform;
     }
 
+    /* Playful Instagram link animation */
+    .insta-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .insta-link:hover {
+      color: #2563eb;
+    }
+
+    .insta-link::after {
+      content: '✨';
+      position: absolute;
+      right: -20px;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .insta-link:hover::after {
+      opacity: 1;
+      transform: translateX(5px);
+    }
+
+    /* Cursor trail effect */
+    .cursor-trail {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: rgba(43, 43, 43, 0.3);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 999;
+      transition: transform 0.1s ease;
+    }
+
     @media (max-width: 768px) {
       .portrait {
         max-width: 80%;
@@ -141,7 +176,8 @@
     <!-- Social Links -->
     <p class="text-lg mb-4">
       <strong>Instagram:</strong>
-      <a href="https://www.instagram.com/soya_ar.tacolv" target="_blank" class="text-blue-600 hover:underline">@soya_ar.tacolv</a>
+      <a href="https://www.instagram.com/soya_ar.tacolv" target="_blank" class="insta-link text-blue-600 hover:underline">@soya_ar.tacolv</a><br>
+      <span class="text-gray-600">Check my Instagram for the latest exhibitions, performances, and updates!</span>
     </p>
 
     <!-- Bio and Portrait -->
@@ -228,7 +264,7 @@
           <input type="email" id="email" name="_replyto" required class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
         <div>
-          <label for="message" class="block text-sm font-medium text-gray-700">Message</<label>
+          <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
           <textarea id="message" name="message" rows="5" required class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
         </div>
         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Send</button>
@@ -259,6 +295,22 @@
         const offsetY = (e.clientY - rect.top - rect.height / 2) * 0.01;
         obj.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
       });
+    });
+
+    // Cursor trail effect
+    document.addEventListener('mousemove', function(e) {
+      const trail = document.createElement('div');
+      trail.className = 'cursor-trail';
+      trail.style.left = `${e.clientX}px`;
+      trail.style.top = `${e.clientY}px`;
+      document.body.appendChild(trail);
+
+      setTimeout(() => {
+        trail.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        trail.style.opacity = '0';
+        trail.style.transform = 'scale(0.5)';
+        setTimeout(() => trail.remove(), 500);
+      }, 50);
     });
 
     // Fade-in animation on scroll
