@@ -62,7 +62,7 @@
       overflow-x: hidden;
     }
 
-    /* Background sketch image with parallax */
+    /* Background sketch image */
     body::before {
       content: "";
       position: fixed;
@@ -77,8 +77,6 @@
       opacity: 0.08;
       z-index: -1;
       pointer-events: none;
-      transform: translateY(0);
-      will-change: transform;
     }
 
     h1, h2, h3 {
@@ -101,16 +99,15 @@
     }
 
     .gallery img {
-      transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, opacity 0.3s ease;
       width: 100%;
       height: auto;
     }
 
     .gallery img:hover {
-      transform: scale(1.05) rotate(2deg);
+      transform: scale(1.05);
       opacity: 0.9;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .gallery-overlay {
@@ -163,17 +160,11 @@
       right: -20px;
       opacity: 0;
       transition: opacity 0.3s ease, transform 0.3s ease;
-      animation: sparklePulse 1.5s infinite ease-in-out;
     }
 
     .insta-link:hover::after {
       opacity: 1;
       transform: translateX(5px);
-    }
-
-    @keyframes sparklePulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
     }
 
     /* Cursor trail effect */
@@ -195,14 +186,6 @@
       color: #4b5563;
       text-align: center;
       margin-top: 0.5rem;
-    }
-
-    /* Gradient divider */
-    hr.divider {
-      border: none;
-      height: 1px;
-      background: linear-gradient(to right, transparent, #2C6E49, transparent);
-      margin: 2rem 0;
     }
 
     @media (max-width: 768px) {
@@ -235,7 +218,7 @@
 
   <!-- Main Content -->
   <div class="max-w-4xl mx-auto px-4 py-8 fade-in">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-teal-800">Soya Arakawa / 荒川創也</h1>
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Soya Arakawa / 荒川創也</h1>
 
     <!-- Social Links -->
     <p class="text-lg mb-4">
@@ -243,7 +226,6 @@
       <a href="https://www.instagram.com/soya_ar.tacolv" target="_blank" class="insta-link text-blue-600 hover:underline">@soya_ar.tacolv</a><br>
       <span class="text-gray-600">Check my Instagram for the latest exhibitions, performances, and updates!</span>
     </p>
-    <hr class="divider">
 
     <!-- Bio and Portrait -->
     <div class="mb-8 md:flex md:space-x-6">
@@ -263,7 +245,6 @@
         </figure>
       </div>
     </div>
-    <hr class="divider">
 
     <!-- Downloads -->
     <h2 class="text-2xl font-semibold mb-4">Downloads</h2>
@@ -273,14 +254,13 @@
         <li><a href="portfolio.pdf" download class="text-blue-600 hover:underline"><i class="fas fa-folder-open mr-2"></i>Portfolio (PDF)</a></li>
       </ul>
     </div>
-    <hr class="divider">
 
     <!-- Gallery -->
     <h2 class="text-2xl font-semibold mb-2">Selected Works</h2>
     <p class="text-sm italic text-gray-600 mb-4">Click images to view larger</p>
     <div class="gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
       <figure>
-        <a href="./work1.html" target="_blank">
+        <a href="work1.html">
           <div class="relative">
             <img src="work1.jpg" alt="Performance art by Soya Arakawa" loading="lazy">
             <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
@@ -289,7 +269,7 @@
         <figcaption>Bellin (Part), 2023</figcaption>
       </figure>
       <figure>
-        <a href="./work2.html" target="_blank">
+        <a href="work2.html">
           <div class="relative">
             <img src="work2.jpg" alt="Installation artwork by Soya Arakawa" loading="lazy">
             <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
@@ -298,7 +278,7 @@
         <figcaption>Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn</figcaption>
       </figure>
       <figure>
-        <a href="./work3.html" target="_blank">
+        <a href="work3.html">
           <div class="relative">
             <img src="work3.jpg" alt="Contemporary drawing by Soya Arakawa" loading="lazy">
             <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
@@ -307,7 +287,7 @@
         <figcaption>Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn</figcaption>
       </figure>
       <figure>
-        <a href="./work4.html" target="_blank">
+        <a href="work4.html">
           <div class="relative">
             <img src="work4.jpg" alt="Sculpture by Soya Arakawa" loading="lazy">
             <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
@@ -316,7 +296,7 @@
         <figcaption>Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn</figcaption>
       </figure>
       <figure>
-        <a href="./work5.html" target="_blank">
+        <a href="work5.html">
           <div class="relative">
             <img src="work5.jpg" alt="Interdisciplinary art by Soya Arakawa" loading="lazy">
             <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
@@ -325,7 +305,7 @@
         <figcaption>Longer Salon, 2023</figcaption>
       </figure>
       <figure>
-        <a href="./work6.html" target="_blank">
+        <a href="work6.html">
           <div class="relative">
             <img src="work6.jpg" alt="Performance score by Soya Arakawa" loading="lazy">
             <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
@@ -334,7 +314,7 @@
         <figcaption>Rarika Report, 2023, Fotocredit Lisa Klosterkötter</figcaption>
       </figure>
       <figure>
-        <a href="./work7.html" target="_blank">
+        <a href="work7.html">
           <div class="relative">
             <img src="work7.jpg" alt="Installation by Soya Arakawa" loading="lazy">
             <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
@@ -343,43 +323,43 @@
         <figcaption>Rarika Report, 2023, Fotocredit Lisa Klosterkötter</figcaption>
       </figure>
       <figure>
-        <a href="./work8.html" target="_blank">
+        <a href="work8.html">
           <div class="relative">
             <img src="work8.jpg" alt="Drawing by Soya Arakawa" loading="lazy">
             <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
           </div>
         </a>
         <figcaption>Rarika Report, 2023</figcaption>
-        </figure>
+      </figure>
       <figure>
-        <a href="./work9.html" target="_blank">
+        <a href="work9.html">
           <div class="relative">
             <img src="work9.jpg" alt="Live art by Soya Arakawa" loading="lazy">
             <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
           </div>
         </a>
-        <figcaption>Totodachiri to, Installationsansicht, Foto Katja Illner</figcaption>
+        <figcaption>Tomodachi to, Installationsansicht, Foto Katja Illner</figcaption>
       </figure>
       <figure>
-        <a href="./work10.html" target="_blank">
+        <a href="work10.html">
           <div class="relative">
             <img src="work10.jpg" alt="Choreographic installation by Soya Arakawa" loading="lazy">
             <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
           </div>
         </a>
-        <figcaption>Akechan, 2025, Fotocredit Maximilian Fadora</figcaption>
+        <figcaption>Akechan, 2025, Fotocredit Maximilian Kandora</figcaption>
       </figure>
       <figure>
-        <a href="./work11.html" target="_blank">
+        <a href="work11.html">
           <div class="relative">
             <img src="work11.jpg" alt="Contemporary art by Soya Arakawa" loading="lazy">
             <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
           </div>
         </a>
-        <figcaption>Bellini (Part), 2023</figcaption>
+        <figcaption>Bellin (Part), 2023</figcaption>
       </figure>
       <figure>
-        <a href="./work12.html" target="_blank">
+        <a href="work12.html">
           <div class="relative">
             <img src="work12.jpg" alt="Performance artwork by Soya Arakawa" loading="lazy">
             <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
@@ -388,7 +368,7 @@
         <figcaption>Akechan, 2025, Fotocredit Maximilian Kandora</figcaption>
       </figure>
       <figure>
-        <a href="./work13.html" target="_blank">
+        <a href="work13.html">
           <div class="relative">
             <img src="work13.jpg" alt="Soya Arakawa interdisciplinary work" loading="lazy">
             <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
@@ -397,7 +377,7 @@
         <figcaption>Akechan, 2025, Fotocredit Maximilian Kandora</figcaption>
       </figure>
       <figure>
-        <a href="./work14.html" target="_blank">
+        <a href="work14.html">
           <div class="relative">
             <img src="work14.jpg" alt="Installation art by Soya Arakawa" loading="lazy">
             <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
@@ -406,36 +386,34 @@
         <figcaption>Akechan, 2025, Fotocredit Maximilian Kandora</figcaption>
       </figure>
     </div>
-    <hr class="divider">
 
     <!-- Performance Videos -->
     <h2 class="text-2xl font-semibold mb-4">Performance Videos</h2>
     <div class="video-grid grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/9EqI5Vuyzrc" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/9EqI5Vuyzrc" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/JvQOjJbMXzA" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/JvQOjJbMXzA" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
-        <iframe src="https://player.vimeo.com/video/918008264" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
+        <iframe src="https://player.vimeo.com/video/91800827" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/-_ATdc7x4OQ" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/-_ATdc7x4OQ" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
-        <iframe src="https://player.vimeo.com/video/889123965" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
+        <iframe src="https://player.vimeo.com/video/889123965" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
-        <iframe src="https://player.vimeo.com/video/613580291" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
+        <iframe src="https://player.vimeo.com/video/613580291" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
-    <hr class="divider">
 
     <!-- Contact Form -->
     <h2 class="text-2xl font-semibold mb-4">Contact</h2>
-    <div class="max-w-lg mx-auto bg-gray-100 p-6 rounded-lg mb-4">
-      <form action="https://formspree.io/f/mnqepkqd" method="POST" class="space-y-4">
+    <div class="max-w-lg mx-0 mr-auto bg-gray-100 p-6 rounded-lg mb-4">
+      <div action="https://formspree.io/f/mnqepkqd" method="POST" class="space-y-4">
         <div>
           <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
           <input type="text" id="name" name="name" required class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -448,10 +426,10 @@
           <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
           <textarea id="message" name="message" rows="5" required class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
         </div>
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Send</button>
-      </form>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Send</button>
+      </div>
     </div>
-    <p class="text-sm text-gray-500 text-center">© Soya Arakawa 2025</p>
+    <p class="text-sm text-gray-500">© Soya Arakawa 2025</p>
   </div>
 
   <script>
@@ -461,7 +439,7 @@
       { element: document.getElementById('drone2'), x: window.innerWidth - 200, y: window.innerHeight / 2, vx: -1, vy: 1 }
     ];
 
-    const contentWidth = 1024; // Approximate width of max-w-4xl
+    const contentWidth = 1024; // Approx width of max-w-4xl
     const margin = 200; // Safe margin for drones
     const contentLeft = (window.innerWidth - contentWidth) / 2;
     const contentRight = contentLeft + contentWidth;
@@ -505,15 +483,15 @@
     document.addEventListener('mousemove', function(e) {
       drones.forEach(drone => {
         const rect = drone.element.getBoundingClientRect();
-        const dx = e.clientX - rect.left - rect.width / 2;
-        const dy = e.clientY - rect.top - rect.height / 2;
-        const distance = Math.sqrt(dx * dx + dy * dy));
+        const dx = e.clientX - (rect.left + rect.width / 2);
+        const dy = e.clientY - (rect.top + rect.height / 2);
+        const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < 200) {
-          // Repulse drone slightly
-          const strength = (200 - distance) / 200;
-          drone.vx -= (dx / distance) * strength * 2;
-          drone.vy -= (dy / distance) * strength * 2;
+        if (distance < 100) {
+          // Repel drone slightly
+          const strength = (100 - distance) / 100;
+          drone.vx -= (dx / distance) * strength * 0.5;
+          drone.vy -= (dy / distance) * strength * 0.5;
         }
       });
     });
@@ -535,13 +513,6 @@
         trail.style.transform = 'scale(0.5)';
         setTimeout(() => trail.remove(), 500);
       }, 50);
-    });
-
-    // Parallax effect for background sketch
-    window.addEventListener('scroll', function() {
-      const scrollY = window.scrollY;
-      document.body.style.setProperty('--scroll', scrollY / 2 + 'px');
-      document.body.style.backgroundPositionY = `calc(50% + ${scrollY * 0.1}px)`;
     });
 
     // Fade-in animation on scroll
