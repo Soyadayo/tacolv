@@ -184,6 +184,22 @@
       margin-top: 0.5rem;
     }
 
+    /* Video styling */
+    .video {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     @media (max-width: 768px) {
       .portrait {
         max-width: 80%;
@@ -236,7 +252,7 @@
 
     .lightbox-image {
       max-width: 100%;
-      max-height: 85vh; /* Adjust as needed */
+      max-height: 85vh;
       display: block;
       object-fit: contain;
     }
@@ -277,7 +293,7 @@
   <img src="drone2.png" alt="floating drone2 sketch" class="floating-object" id="drone2">
 
   <div class="max-w-4xl mx-auto px-4 py-8 fade-in">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">Soya Arakawa / 荒川創也</h1>
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-teal-800">Soya Arakawa / 荒川創也</h1>
 
     <p class="text-lg mb-4">
       <strong>Instagram:</strong>
@@ -442,21 +458,19 @@
       </figure>
     </div>
 
-    ---
-
     <h2 class="text-2xl font-semibold mb-4">Performance Videos</h2>
     <div class="video-grid grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1_HERE" frameborder="0" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/9EqI5Vuyzrc" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2_HERE" frameborder="0" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/JvQOjJbMXzA" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
         <iframe src="https://player.vimeo.com/video/91800827" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3_HERE" frameborder="0" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/-_ATdc7x4OQ" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
         <iframe src="https://player.vimeo.com/video/889123965" frameborder="0" allowfullscreen loading="lazy"></iframe>
@@ -466,10 +480,8 @@
       </div>
     </div>
 
-    ---
-
     <h2 class="text-2xl font-semibold mb-4">Contact</h2>
-    <div class="max-w-lg mx-0 mr-auto bg-gray-100 p-6 rounded-lg mb-4">
+    <div class="max-w-lg mx-auto bg-gray-100 p-6 rounded-lg mb-4">
       <form action="https://formspree.io/f/mnqepkqd" method="POST" class="space-y-4">
         <div>
           <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
@@ -486,7 +498,7 @@
         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Send</button>
       </form>
     </div>
-    <p class="text-sm text-gray-500">© Soya Arakawa 2025</p>
+    <p class="text-sm text-gray-500 text-center">© Soya Arakawa 2025</p>
   </div>
 
   <script>
@@ -526,7 +538,7 @@
         // Randomly adjust velocity for organic movement
         drone.vx += (Math.random() - 0.5) * 0.2;
         drone.vy += (Math.random() - 0.5) * 0.2;
-        drone.vx = Math.max(-2, Math.min(2, drone.vx)); // Limit speed
+        drone.vx = Math.max(-2, Math.min(2, drone.vx));
         drone.vy = Math.max(-2, Math.min(2, drone.vy));
 
         // Apply position
@@ -577,14 +589,13 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.animation = 'fadeIn 0.8s ease-out forwards';
+          entry.target.style.animation = 'fadeIn';
         }
       });
     }, { threshold: 0.1 });
-    fadeIns.forEach(el => observer.observe(el));
+    fadeIns.forEach(f => observer.observe(f));
 
-
-    // *** ここからLightbox機能の追加 ***
+    // Lightbox functionality
     document.addEventListener('DOMContentLoaded', () => {
       const lightboxTriggers = document.querySelectorAll('.js-lightbox-trigger');
       let lightboxOverlay = document.createElement('div');
@@ -593,22 +604,20 @@
 
       lightboxTriggers.forEach(trigger => {
         trigger.addEventListener('click', function(e) {
-          e.preventDefault(); // デフォルトのリンク動作（ページ遷移）を停止
+          e.preventDefault();
 
-          // hrefではなく、data-srcとdata-captionから画像パスとキャプションを取得
           const imageUrl = this.getAttribute('data-src');
           const imageCaption = this.getAttribute('data-caption');
 
           lightboxOverlay.innerHTML = `
             <span class="lightbox-close">×</span>
             <div class="lightbox-content">
-              <img src="${imageUrl}" class="lightbox-image" alt="拡大画像">
+              <img src="${imageUrl}" class="lightbox-image" alt="Expanded Image">
               ${imageCaption ? `<p class="lightbox-caption">${imageCaption}</p>` : ''}
             </div>
           `;
           lightboxOverlay.classList.add('active');
 
-          // 閉じるボタンにイベントリスナーを追加
           const closeButton = lightboxOverlay.querySelector('.lightbox-close');
           if (closeButton) {
             closeButton.addEventListener('click', closeLightbox);
@@ -616,14 +625,14 @@
         });
       });
 
-      // 画像以外の領域をクリックでLightboxを閉じる
+      // Close lightbox on overlay click
       lightboxOverlay.addEventListener('click', function(e) {
         if (e.target === lightboxOverlay) {
           closeLightbox();
         }
       });
 
-      // ESCキーでLightboxを閉じる
+      // Close lightbox on escape key press
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && lightboxOverlay.classList.contains('active')) {
           closeLightbox();
@@ -632,11 +641,9 @@
 
       function closeLightbox() {
         lightboxOverlay.classList.remove('active');
-        // メモリ解放のためにコンテンツをクリア
         lightboxOverlay.innerHTML = '';
       }
     });
-    // *** Lightbox機能の追加ここまで ***
   </script>
 </body>
 </html>
