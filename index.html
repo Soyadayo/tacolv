@@ -211,6 +211,22 @@
       margin: 2rem 0;
     }
 
+    /* Video styling */
+    .video {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     @media (max-width: 768px) {
       .portrait {
         max-width: 80%;
@@ -410,28 +426,28 @@
     <h2 class="text-2xl font-semibold mb-4">Performance Videos</h2>
     <div class="video-grid grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
       <div class="video">
-        <iframe src="www.youtube.com/watch?v=xCKYIaA05Hc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/xCKYIaA05Hc" title="Performance Video 1 by Soya Arakawa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
-        <iframe src="https://youtu.be/-_ATdc7x4OQ?si=WT8U619KG7VjW2Co" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/-_ATdc7x4OQ" title="Performance Video 2 by Soya Arakawa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
-        <iframe src="https://player.vimeo.com/video/91800827" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://player.vimeo.com/video/91800827" title="Performance Video 3 by Soya Arakawa" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
-        <iframe src="https://youtu.be/g09PCrbbG4M?si=TdpnmPav4-lvc601" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/g09PCrbbG4M" title="Performance Video 4 by Soya Arakawa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
-        <iframe src="https://player.vimeo.com/video/889123965" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://player.vimeo.com/video/889123965" title="Performance Video 5 by Soya Arakawa" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
-        <iframe src="https://player.vimeo.com/video/613580291" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://player.vimeo.com/video/613580291" title="Performance Video 6 by Soya Arakawa" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
     <hr class="divider">
 
     <h2 class="text-2xl font-semibold mb-4">Contact</h2>
-    <div class="max-w-lg mx-0 mr-auto bg-gray-100 p-6 rounded-lg mb-4">
+    <div class="max-w-lg mx-auto bg-gray-100 p-6 rounded-lg mb-4">
       <form action="https://formspree.io/f/mnqepkqd" method="POST" class="space-y-4">
         <div>
           <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
@@ -448,7 +464,7 @@
         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Send</button>
       </form>
     </div>
-    <p class="text-sm text-gray-500">© Soya Arakawa 2025</p>
+    <p class="text-sm text-gray-500 text-center">© Soya Arakawa 2025</p>
   </div>
 
   <script>
@@ -488,7 +504,7 @@
         // Randomly adjust velocity for organic movement
         drone.vx += (Math.random() - 0.5) * 0.2;
         drone.vy += (Math.random() - 0.5) * 0.2;
-        drone.vx = Math.max(-2, Math.min(2, drone.vx)); // Limit speed
+        drone.vx = Math.max(-2, Math.min(2, drone.vx));
         drone.vy = Math.max(-2, Math.min(2, drone.vy));
 
         // Apply position
