@@ -188,41 +188,6 @@
       margin-top: 0.5rem;
     }
 
-    /* Lightbox styling */
-    #lightbox {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.8);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-
-    #lightbox-img {
-      max-width: 90%;
-      max-height: 90vh;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-
-    .close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      color: white;
-      font-size: 2rem;
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .close:hover {
-      color: #ff6b6b;
-    }
-
     @media (max-width: 768px) {
       .portrait {
         max-width: 80%;
@@ -265,17 +230,11 @@
     <!-- Bio and Portrait -->
     <div class="mb-8 md:flex md:space-x-6">
       <div class="md:w-1/2">
-        <div class="flex flex-col space-y-2 mb-4">
-          <div class="flex items-baseline">
-            <strong class="w-32">Born:</strong>
-            <span>1984, Hamamatsu, Japan</span>
-          </div>
-          <div class="flex items-baseline">
-            <strong class="w-32">Lives and works in:</strong>
-            <span>Krefeld, Germany</span>
-          </div>
-        </div>
-        <p class="text-gray-700 leading-relaxed">
+        <p class="text-gray-700 text-left space-y-2 mb-4">
+          <span>Born: 1984, Hamamatsu, Japan</span><br>
+          <span>Lives and works in: Krefeld, Germany</span>
+        </p>
+        <p class="text-gray-700 leading-relaxed text-left">
           Soya Arakawa, born in Hamamatsu, Japan, in 1984, is an artist based in Krefeld, Germany. Trained at Kanazawa College of Art and Kunstakademie Düsseldorf under Prof. Rita McBride, he explores sculpture, drawing, installation, and performance. His practice integrates choreography with spatial composition, creating dynamic installations and performance scores that often form the basis for live interdisciplinary works, where he performs as a singer, dancer, or instrumentalist. Arakawa’s art engages with themes of cultural identity, fiction, and self-mythology, blending contemporary and experimental forms.
         </p>
       </div>
@@ -301,109 +260,131 @@
     <p class="text-sm italic text-gray-600 mb-4">Click images to view larger</p>
     <div class="gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
       <figure>
-        <div class="relative">
-          <img src="work1.jpg" alt="Performance art by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-          <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-        </div>
+        <a href="work1.html">
+          <div class="relative">
+            <img src="work1.jpg" alt="Performance art by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
         <figcaption>Bellin (Part), 2023</figcaption>
       </figure>
       <figure>
-        <div class="relative">
-          <img src="work2.jpg" alt="Installation artwork by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-          <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-        </div>
+        <a href="work2.html">
+          <div class="relative">
+            <img src="work2.jpg" alt="Installation artwork by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
         <figcaption>Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn</figcaption>
       </figure>
       <figure>
-        <div class="relative">
-          <img src="work3.jpg" alt="Contemporary drawing by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-          <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-        </div>
+        <a href="work3.html">
+          <div class="relative">
+            <img src="work3.jpg" alt="Contemporary drawing by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
         <figcaption>Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn</figcaption>
       </figure>
       <figure>
-        <div class="relative">
-          <img src="work4.jpg" alt="Sculpture by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-          <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-        </div>
+        <a href="work4.html">
+          <div class="relative">
+            <img src="work4.jpg" alt="Sculpture by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
         <figcaption>Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn</figcaption>
       </figure>
       <figure>
-        <div class="relative">
-          <img src="work5.jpg" alt="Interdisciplinary art by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-          <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-        </div>
+        <a href="work5.html">
+          <div class="relative">
+            <img src="work5.jpg" alt="Interdisciplinary art by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
         <figcaption>Longer Salon, 2023</figcaption>
       </figure>
       <figure>
-        <div class="relative">
-          <img src="work6.jpg" alt="Performance score by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-          <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-        </div>
+        <a href="work6.html">
+          <div class="relative">
+            <img src="work6.jpg" alt="Performance score by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
         <figcaption>Rarika Report, 2023, Fotocredit Lisa Klosterkötter</figcaption>
       </figure>
       <figure>
-        <div class="relative">
-          <img src="work7.jpg" alt="Installation by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-          <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-        </div>
+        <a href="work7.html">
+          <div class="relative">
+            <img src="work7.jpg" alt="Installation by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
         <figcaption>Rarika Report, 2023, Fotocredit Lisa Klosterkötter</figcaption>
       </figure>
       <figure>
-        <div class="relative">
-          <img src="work8.jpg" alt="Drawing by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-          <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-        </div>
+        <a href="work8.html">
+          <div class="relative">
+            <img src="work8.jpg" alt="Drawing by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
         <figcaption>Rarika Report, 2023</figcaption>
       </figure>
       <figure>
-        <div class="relative">
-          <img src="work9.jpg" alt="Live art by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-          <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-        </div>
+        <a href="work9.html">
+          <div class="relative">
+            <img src="work9.jpg" alt="Live art by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
         <figcaption>Tomodachi to, Installationsansicht, Foto Katja Illner</figcaption>
       </figure>
       <figure>
-        <div class="relative">
-          <img src="work10.jpg" alt="Choreographic installation by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-          <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-        </div>
+        <a href="work10.html">
+          <div class="relative">
+            <img src="work10.jpg" alt="Choreographic installation by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
         <figcaption>Akechan, 2025, Fotocredit Maximilian Kandora</figcaption>
       </figure>
       <figure>
-        <div class="relative">
-          <img src="work11.jpg" alt="Contemporary art by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-          <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-        </div>
+        <a href="work11.html">
+          <div class="relative">
+            <img src="work11.jpg" alt="Contemporary art by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
         <figcaption>Bellin (Part), 2023</figcaption>
       </figure>
       <figure>
-        <div class="relative">
-          <img src="work12.jpg" alt="Performance artwork by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-          <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-        </div>
+        <a href="work12.html">
+          <div class="relative">
+            <img src="work12.jpg" alt="Performance artwork by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
         <figcaption>Akechan, 2025, Fotocredit Maximilian Kandora</figcaption>
       </figure>
       <figure>
-        <div class="relative">
-          <img src="work13.jpg" alt="Soya Arakawa interdisciplinary work" loading="lazy" onclick="openLightbox(this.src)">
-          <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-        </div>
+        <a href="work13.html">
+          <div class="relative">
+            <img src="work13.jpg" alt="Soya Arakawa interdisciplinary work" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
         <figcaption>Akechan, 2025, Fotocredit Maximilian Kandora</figcaption>
       </figure>
       <figure>
-        <div class="relative">
-          <img src="work14.jpg" alt="Installation art by Soya Arakawa" loading="lazy" onclick="openLightbox(this.src)">
-          <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-        </div>
+        <a href="work14.html">
+          <div class="relative">
+            <img src="work14.jpg" alt="Installation art by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
         <figcaption>Akechan, 2025, Fotocredit Maximilian Kandora</figcaption>
       </figure>
-    </div>
-
-    <!-- Lightbox -->
-    <div id="lightbox">
-      <span class="close">×</span>
-      <img id="lightbox-img" src="">
     </div>
 
     <!-- Performance Videos -->
@@ -452,20 +433,6 @@
   </div>
 
   <script>
-    function openLightbox(src) {
-      const lightbox = document.getElementById('lightbox');
-      const img = document.getElementById('lightbox-img');
-      img.src = src;
-      lightbox.style.display = 'flex';
-      // Prevent closing when clicking on the image
-      img.onclick = function(e) { e.stopPropagation(); };
-    }
-
-    function closeLightbox() {
-      const lightbox = document.getElementById('lightbox');
-      lightbox.style.display = 'none';
-    }
-
     // Floating drones animation
     const drones = [
       { element: document.getElementById('drone1'), x: 100, y: 100, vx: 1, vy: 1 },
