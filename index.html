@@ -104,7 +104,13 @@
     }
 
     .floating-object {
-      transition: transform 0.2s ease;
+      position: fixed;
+      width: 96px;
+      height: auto;
+      opacity: 0.6;
+      z-index: 0;
+      pointer-events: none;
+      transition: transform 0.3s ease;
       will-change: transform;
     }
 
@@ -176,9 +182,9 @@
 <body class="antialiased">
 
   <!-- Floating sketch image (drone) -->
-  <img src="drone.png" alt="floating drone sketch" class="floating-object absolute top-10 left-10 w-24 opacity-60 z-0 pointer-events-none">
+  <img src="drone.png" alt="floating drone sketch" class="floating-object" id="drone1">
   <!-- Second floating sketch image (drone2) -->
-  <img src="drone2.png" alt="floating drone2 sketch" class="floating-object absolute top-[50vh] right-10 w-24 opacity-60 z-0 pointer-events-none">
+  <img src="drone2.png" alt="floating drone2 sketch" class="floating-object" id="drone2">
 
   <!-- Main Content -->
   <div class="max-w-4xl mx-auto px-4 py-8 fade-in">
@@ -342,16 +348,71 @@
       lightbox.style.display = 'none';
     }
 
-    // Floating image logic
+    // Floating drones animation
+    const drones = [
+      { element: document.getElementById('drone1'), x: 100, y: 100, vx: 1, vy: 1 },
+      { element: document.getElementById('drone2'), x: window.innerWidth - 200, y: window.innerHeight / 2, vx: -1, vy: 1 }
+    ];
+
+    const contentWidth = 1024; // Approx width of max-w-4xl
+    const margin = 200; // Safe margin for drones
+    const contentLeft = (window.innerWidth - contentWidth) / 2;
+    const contentRight = contentLeft + contentWidth;
+
+    function updateDrones() {
+      drones.forEach(drone => {
+        // Update position
+        drone.x += drone.vx;
+        drone.y += drone.vy;
+
+        // Define safe boundaries (left and right margins)
+        const leftBound = drone.x < contentLeft ? 0 : contentRight;
+        const rightBound = drone.x < contentLeft ? contentLeft - drone.element.offsetWidth : window.innerWidth;
+        const topBound = 0;
+        const bottomBound = window.innerHeight - drone.element.offsetHeight;
+
+        // Bounce off boundaries
+        if (drone.x <= leftBound || drone.x >= rightBound) {
+          drone.vx = -drone.vx;
+          drone.x = Math.max(leftBound, Math.min(rightBound, drone.x));
+        }
+        if (drone.y <= topBound || drone.y >= bottomBound) {
+          drone.vy = -drone.vy;
+          drone.y = Math.max(topBound, Math.min(bottomBound, drone.y));
+        }
+
+        // Randomly adjust velocity for organic movement
+        drone.vx += (Math.random() - 0.5) * 0.2;
+        drone.vy += (Math.random() - 0.5) * 0.2;
+        drone.vx = Math.max(-2, Math.min(2, drone.vx)); // Limit speed
+        drone.vy = Math.max(-2, Math.min(2, drone.vy));
+
+        // Apply position
+        drone.element.style.transform = `translate(${drone.x}px, ${drone.y}px)`;
+      });
+
+      requestAnimationFrame(updateDrones);
+    }
+
+    // Mouse interaction: subtle repulsion effect
     document.addEventListener('mousemove', function(e) {
-      const objs = document.querySelectorAll('.floating-object');
-      objs.forEach(obj => {
-        const rect = obj.getBoundingClientRect();
-        const offsetX = (e.clientX - rect.left - rect.width / 2) * 0.01;
-        const offsetY = (e.clientY - rect.top - rect.height / 2) * 0.01;
-        obj.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+      drones.forEach(drone => {
+        const rect = drone.element.getBoundingClientRect();
+        const dx = e.clientX - (rect.left + rect.width / 2);
+        const dy = e.clientY - (rect.top + rect.height / 2);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < 100) {
+          // Repel drone slightly
+          const strength = (100 - distance) / 100;
+          drone.vx -= (dx / distance) * strength * 0.5;
+          drone.vy -= (dy / distance) * strength * 0.5;
+        }
       });
     });
+
+    // Start drone animation
+    updateDrones();
 
     // Cursor trail effect
     document.addEventListener('mousemove', function(e) {
