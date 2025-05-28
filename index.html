@@ -58,7 +58,7 @@
       overflow-x: hidden;
     }
 
-    /* Background sketch image with parallax */
+    /* Background sketch image */
     body::before {
       content: "";
       position: fixed;
@@ -73,8 +73,6 @@
       opacity: 0.08;
       z-index: -1;
       pointer-events: none;
-      transform: translateY(0);
-      will-change: transform;
     }
 
     h1, h2, h3 {
@@ -97,16 +95,15 @@
     }
 
     .gallery img {
-      transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, opacity 0.3s ease;
       width: 100%;
       height: auto;
     }
 
     .gallery img:hover {
-      transform: scale(1.05) rotate(2deg);
+      transform: scale(1.05);
       opacity: 0.9;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .gallery-overlay {
@@ -159,17 +156,11 @@
       right: -20px;
       opacity: 0;
       transition: opacity 0.3s ease, transform 0.3s ease;
-      animation: sparklePulse 1.5s infinite ease-in-out;
     }
 
     .insta-link:hover::after {
       opacity: 1;
       transform: translateX(5px);
-    }
-
-    @keyframes sparklePulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
     }
 
     /* Cursor trail effect */
@@ -184,16 +175,6 @@
       transition: transform 0.1s ease;
     }
 
-    .cursor-trail.star {
-      width: 12px;
-      height: 12px;
-      font-size: 12px;
-      line-height: 12px;
-      text-align: center;
-      background: none;
-      color: rgba(255, 182, 193, 0.5);
-    }
-
     /* Caption styling */
     figcaption {
       font-size: 0.875rem;
@@ -201,14 +182,6 @@
       color: #4b5563;
       text-align: center;
       margin-top: 0.5rem;
-    }
-
-    /* Gradient divider */
-    hr.divider {
-      border: none;
-      height: 1px;
-      background: linear-gradient(to right, transparent, #2C6E49, transparent);
-      margin: 2rem 0;
     }
 
     /* Video styling */
@@ -245,6 +218,72 @@
         transform: translateY(0);
       }
     }
+
+    /* Lightbox styles */
+    .lightbox-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .lightbox-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 85vh;
+      display: block;
+      object-fit: contain;
+    }
+
+    .lightbox-caption {
+      color: white;
+      margin-top: 10px;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    @media (max-width: 768px) {
+      .lightbox-close {
+        top: 10px;
+        right: 15px;
+        font-size: 1.5rem;
+      }
+      .lightbox-caption {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 
@@ -261,7 +300,6 @@
       <a href="https://www.instagram.com/soya_ar.tacolv" target="_blank" class="insta-link text-blue-600 hover:underline">@soya_ar.tacolv</a><br>
       <span class="text-gray-600">Check my Instagram for the latest exhibitions, performances, and updates!</span>
     </p>
-    <hr class="divider">
 
     <div class="mb-8 md:flex md:space-x-6">
       <div class="md:w-1/2">
@@ -280,7 +318,6 @@
         </figure>
       </div>
     </div>
-    <hr class="divider">
 
     <h2 class="text-2xl font-semibold mb-4">Downloads</h2>
     <div class="bg-gray-100 p-4 rounded-lg mb-8 download-links">
@@ -289,27 +326,151 @@
         <li><a href="portfolio.pdf" download class="text-blue-600 hover:underline"><i class="fas fa-folder-open mr-2"></i>Portfolio (PDF)</a></li>
       </ul>
     </div>
-    <hr class="divider">
 
     <h2 class="text-2xl font-semibold mb-2">Selected Works</h2>
     <p class="text-sm italic text-gray-600 mb-4">Click images to view larger</p>
-    <div class="gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8" id="gallery-container">
-      </div>
-    <hr class="divider">
+    <div class="gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+      <figure>
+        <a href="#" class="js-lightbox-trigger" data-src="work1.jpg" data-caption="Bellin (Part), 2023">
+          <div class="relative">
+            <img src="work1.jpg" alt="Performance art by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
+        <figcaption>Bellin (Part), 2023</figcaption>
+      </figure>
+      <figure>
+        <a href="#" class="js-lightbox-trigger" data-src="work2.jpg" data-caption="Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn">
+          <div class="relative">
+            <img src="work2.jpg" alt="Installation artwork by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
+        <figcaption>Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn</figcaption>
+      </figure>
+      <figure>
+        <a href="#" class="js-lightbox-trigger" data-src="work3.jpg" data-caption="Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn">
+          <div class="relative">
+            <img src="work3.jpg" alt="Contemporary drawing by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
+        <figcaption>Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn</figcaption>
+      </figure>
+      <figure>
+        <a href="#" class="js-lightbox-trigger" data-src="work4.jpg" data-caption="Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn">
+          <div class="relative">
+            <img src="work4.jpg" alt="Sculpture by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
+        <figcaption>Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn</figcaption>
+      </figure>
+      <figure>
+        <a href="#" class="js-lightbox-trigger" data-src="work5.jpg" data-caption="Longer Salon, 2023">
+          <div class="relative">
+            <img src="work5.jpg" alt="Interdisciplinary art by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
+        <figcaption>Longer Salon, 2023</figcaption>
+      </figure>
+      <figure>
+        <a href="#" class="js-lightbox-trigger" data-src="work6.jpg" data-caption="Rarika Report, 2023, Fotocredit Lisa Klosterkötter">
+          <div class="relative">
+            <img src="work6.jpg" alt="Performance score by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
+        <figcaption>Rarika Report, 2023, Fotocredit Lisa Klosterkötter</figcaption>
+      </figure>
+      <figure>
+        <a href="#" class="js-lightbox-trigger" data-src="work7.jpg" data-caption="Rarika Report, 2023, Fotocredit Lisa Klosterkötter">
+          <div class="relative">
+            <img src="work7.jpg" alt="Installation by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
+        <figcaption>Rarika Report, 2023, Fotocredit Lisa Klosterkötter</figcaption>
+      </figure>
+      <figure>
+        <a href="#" class="js-lightbox-trigger" data-src="work8.jpg" data-caption="Rarika Report, 2023">
+          <div class="relative">
+            <img src="work8.jpg" alt="Drawing by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
+        <figcaption>Rarika Report, 2023</figcaption>
+      </figure>
+      <figure>
+        <a href="#" class="js-lightbox-trigger" data-src="work9.jpg" data-caption="Tomodachi to, Installationsansicht, Foto Katja Illner">
+          <div class="relative">
+            <img src="work9.jpg" alt="Live art by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
+        <figcaption>Tomodachi to, Installationsansicht, Foto Katja Illner</figcaption>
+      </figure>
+      <figure>
+        <a href="#" class="js-lightbox-trigger" data-src="work10.jpg" data-caption="Akechan, 2025, Fotocredit Maximilian Kandora">
+          <div class="relative">
+            <img src="work10.jpg" alt="Choreographic installation by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
+        <figcaption>Akechan, 2025, Fotocredit Maximilian Kandora</figcaption>
+      </figure>
+      <figure>
+        <a href="#" class="js-lightbox-trigger" data-src="work11.jpg" data-caption="Bellin (Part), 2023">
+          <div class="relative">
+            <img src="work11.jpg" alt="Contemporary art by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
+        <figcaption>Bellin (Part), 2023</figcaption>
+      </figure>
+      <figure>
+        <a href="#" class="js-lightbox-trigger" data-src="work12.jpg" data-caption="Akechan, 2025, Fotocredit Maximilian Kandora">
+          <div class="relative">
+            <img src="work12.jpg" alt="Performance artwork by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
+        <figcaption>Akechan, 2025, Fotocredit Maximilian Kandora</figcaption>
+      </figure>
+      <figure>
+        <a href="#" class="js-lightbox-trigger" data-src="work13.jpg" data-caption="Akechan, 2025, Fotocredit Maximilian Kandora">
+          <div class="relative">
+            <img src="work13.jpg" alt="Soya Arakawa interdisciplinary work" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
+        <figcaption>Akechan, 2025, Fotocredit Maximilian Kandora</figcaption>
+      </figure>
+      <figure>
+        <a href="#" class="js-lightbox-trigger" data-src="work14.jpg" data-caption="Akechan, 2025, Fotocredit Maximilian Kandora">
+          <div class="relative">
+            <img src="work14.jpg" alt="Installation art by Soya Arakawa" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </a>
+        <figcaption>Akechan, 2025, Fotocredit Maximilian Kandora</figcaption>
+      </figure>
+    </div>
 
     <h2 class="text-2xl font-semibold mb-4">Performance Videos</h2>
     <div class="video-grid grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID_0" title="Performance Video 1 by Soya Arakawa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/xCKYIaA05Hc" title="Performance Video 1 by Soya Arakawa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID_1" title="Performance Video 2 by Soya Arakawa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/-_ATdc7x4OQ" title="Performance Video 2 by Soya Arakawa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
         <iframe src="https://player.vimeo.com/video/91800827" title="Performance Video 3 by Soya Arakawa" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID_2" title="Performance Video 4 by Soya Arakawa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/g09PCrbbG4M" title="Performance Video 4 by Soya Arakawa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="video">
         <iframe src="https://player.vimeo.com/video/889123965" title="Performance Video 5 by Soya Arakawa" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
@@ -318,10 +479,9 @@
         <iframe src="https://player.vimeo.com/video/613580291" title="Performance Video 6 by Soya Arakawa" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
-    <hr class="divider">
 
     <h2 class="text-2xl font-semibold mb-4">Contact</h2>
-    <div class="max-w-lg mx-0 mr-auto bg-gray-100 p-6 rounded-lg mb-4">
+    <div class="max-w-lg mx-auto bg-gray-100 p-6 rounded-lg mb-4">
       <form action="https://formspree.io/f/mnqepkqd" method="POST" class="space-y-4">
         <div>
           <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
@@ -342,55 +502,6 @@
   </div>
 
   <script>
-    // ギャラリーの画像データを配列として定義
-    const imageData = [
-      { src: 'work1.jpg', alt: 'Performance art by Soya Arakawa', caption: 'Bellin (Part), 2023', href: 'work1.html' },
-      { src: 'work2.jpg', alt: 'Installation artwork by Soya Arakawa', caption: 'Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn', href: 'work2.html' },
-      { src: 'work3.jpg', alt: 'Contemporary drawing by Soya Arakawa', caption: 'Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn', href: 'work3.html' },
-      { src: 'work4.jpg', alt: 'Sculpture by Soya Arakawa', caption: 'Kagami Ita, 2023, Fotocredit Kunsthalle Münster Moritz Hagedorn', href: 'work4.html' },
-      { src: 'work5.jpg', alt: 'Interdisciplinary art by Soya Arakawa', caption: 'Longer Salon, 2023', href: 'work5.html' },
-      { src: 'work6.jpg', alt: 'Performance score by Soya Arakawa', caption: 'Rarika Report, 2023, Fotocredit Lisa Klosterkötter', href: 'work6.html' },
-      { src: 'work7.jpg', alt: 'Installation by Soya Arakawa', caption: 'Rarika Report, 2023, Fotocredit Lisa Klosterkötter', href: 'work7.html' },
-      { src: 'work8.jpg', alt: 'Drawing by Soya Arakawa', caption: 'Rarika Report, 2023', href: 'work8.html' },
-      { src: 'work9.jpg', alt: 'Live art by Soya Arakawa', caption: 'Tomodachi to, Installationsansicht, Foto Katja Illner', href: 'work9.html' },
-      { src: 'work10.jpg', alt: 'Choreographic installation by Soya Arakawa', caption: 'Akechan, 2025, Fotocredit Maximilian Kandora', href: 'work10.html' },
-      { src: 'work11.jpg', alt: 'Contemporary art by Soya Arakawa', caption: 'Bellin (Part), 2023', href: 'work11.html' },
-      { src: 'work12.jpg', alt: 'Performance artwork by Soya Arakawa', caption: 'Akechan, 2025, Fotocredit Maximilian Kandora', href: 'work12.html' },
-      { src: 'work13.jpg', alt: 'Soya Arakawa interdisciplinary work', caption: 'Akechan, 2025, Fotocredit Maximilian Kandora', href: 'work13.html' },
-      { src: 'work14.jpg', alt: 'Installation art by Soya Arakawa', caption: 'Akechan, 2025, Fotocredit Maximilian Kandora', href: 'work14.html' }
-    ];
-
-    const galleryContainer = document.getElementById('gallery-container');
-
-    imageData.forEach(data => {
-      const figure = document.createElement('figure');
-      const anchor = document.createElement('a');
-      anchor.href = data.href;
-
-      const divRelative = document.createElement('div');
-      divRelative.className = 'relative';
-
-      const img = document.createElement('img');
-      img.src = data.src;
-      img.alt = data.alt;
-      img.loading = 'lazy'; // 遅延読み込み
-
-      const divOverlay = document.createElement('div');
-      divOverlay.className = 'gallery-overlay';
-      divOverlay.innerHTML = '<i class="fas fa-search-plus"></i>';
-
-      const figcaption = document.createElement('figcaption');
-      figcaption.textContent = data.caption;
-
-      divRelative.appendChild(img);
-      divRelative.appendChild(divOverlay);
-      anchor.appendChild(divRelative);
-      figure.appendChild(anchor);
-      figure.appendChild(figcaption);
-
-      galleryContainer.appendChild(figure);
-    });
-
     // Floating drones animation
     const drones = [
       { element: document.getElementById('drone1'), x: 100, y: 100, vx: 1, vy: 1 },
@@ -427,7 +538,7 @@
         // Randomly adjust velocity for organic movement
         drone.vx += (Math.random() - 0.5) * 0.2;
         drone.vy += (Math.random() - 0.5) * 0.2;
-        drone.vx = Math.max(-2, Math.min(2, drone.vx)); // Limit speed
+        drone.vx = Math.max(-2, Math.min(2, drone.vx));
         drone.vy = Math.max(-2, Math.min(2, drone.vy));
 
         // Apply position
@@ -457,28 +568,12 @@
     // Start drone animation
     updateDrones();
 
-    // Cursor trail effect with star variation
-    const pastelColors = [
-      'rgba(255, 182, 193, 0.5)', // Light pink
-      'rgba(173, 216, 230, 0.5)', // Light mint
-      'rgba(200, 181, 245, 0.5)'  // Light lavender
-    ];
-
+    // Cursor trail effect
     document.addEventListener('mousemove', function(e) {
-      const isStar = Math.random() < 0.2; // 20% chance for star
       const trail = document.createElement('div');
-      trail.className = 'cursor-trail' + (isStar ? ' star' : '');
+      trail.className = 'cursor-trail';
       trail.style.left = `${e.clientX}px`;
       trail.style.top = `${e.clientY}px`;
-      
-      if (isStar) {
-        trail.textContent = '✨';
-        trail.style.background = 'none';
-        trail.style.color = pastelColors[Math.floor(Math.random() * pastelColors.length)];
-      } else {
-        trail.style.background = pastelColors[Math.floor(Math.random() * pastelColors.length)];
-      }
-
       document.body.appendChild(trail);
 
       setTimeout(() => {
@@ -487,13 +582,6 @@
         trail.style.transform = 'scale(0.5)';
         setTimeout(() => trail.remove(), 500);
       }, 50);
-    });
-
-    // Parallax effect for background sketch
-    window.addEventListener('scroll', function() {
-      const scrollY = window.scrollY;
-      document.body.style.setProperty('--scroll', scrollY / 2 + 'px');
-      document.body.style.backgroundPositionY = `calc(50% + ${scrollY * 0.1}px)`;
     });
 
     // Fade-in animation on scroll
@@ -506,6 +594,56 @@
       });
     }, { threshold: 0.1 });
     fadeIns.forEach(el => observer.observe(el));
+
+    // Lightbox functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const lightboxTriggers = document.querySelectorAll('.js-lightbox-trigger');
+      let lightboxOverlay = document.createElement('div');
+      lightboxOverlay.className = 'lightbox-overlay';
+      document.body.appendChild(lightboxOverlay);
+
+      lightboxTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          const imageUrl = this.getAttribute('data-src');
+          const imageCaption = this.getAttribute('data-caption');
+
+          lightboxOverlay.innerHTML = `
+            <span class="lightbox-close">×</span>
+            <div class="lightbox-content">
+              <img src="${imageUrl}" class="lightbox-image" alt="Expanded Image">
+              ${imageCaption ? `<p class="lightbox-caption">${imageCaption}</p>` : ''}
+            </div>
+          `;
+          lightboxOverlay.classList.add('active');
+
+          const closeButton = lightboxOverlay.querySelector('.lightbox-close');
+          if (closeButton) {
+            closeButton.addEventListener('click', closeLightbox);
+          }
+        });
+      });
+
+      // Close lightbox on overlay click
+      lightboxOverlay.addEventListener('click', function(e) {
+        if (e.target === lightboxOverlay) {
+          closeLightbox();
+        }
+      });
+
+      // Close lightbox on escape key press
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightboxOverlay.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+
+      function closeLightbox() {
+        lightboxOverlay.classList.remove('active');
+        lightboxOverlay.innerHTML = '';
+      }
+    });
   </script>
 </body>
 </html>
