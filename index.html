@@ -62,7 +62,7 @@
       overflow-x: hidden;
     }
 
-    /* Background sketch image */
+    /* Background sketch image with parallax */
     body::before {
       content: "";
       position: fixed;
@@ -77,6 +77,8 @@
       opacity: 0.08;
       z-index: -1;
       pointer-events: none;
+      transform: translateY(0);
+      will-change: transform;
     }
 
     h1, h2, h3 {
@@ -99,15 +101,16 @@
     }
 
     .gallery img {
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
       width: 100%;
       height: auto;
     }
 
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.05) rotate(2deg);
       opacity: 0.9;
       cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .gallery-overlay {
@@ -160,11 +163,17 @@
       right: -20px;
       opacity: 0;
       transition: opacity 0.3s ease, transform 0.3s ease;
+      animation: sparklePulse 1.5s infinite ease-in-out;
     }
 
     .insta-link:hover::after {
       opacity: 1;
       transform: translateX(5px);
+    }
+
+    @keyframes sparklePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
     }
 
     /* Cursor trail effect */
@@ -186,6 +195,14 @@
       color: #4b5563;
       text-align: center;
       margin-top: 0.5rem;
+    }
+
+    /* Gradient divider */
+    hr.divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #2C6E49, transparent);
+      margin: 2rem 0;
     }
 
     @media (max-width: 768px) {
@@ -218,7 +235,7 @@
 
   <!-- Main Content -->
   <div class="max-w-4xl mx-auto px-4 py-8 fade-in">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">Soya Arakawa / 荒川創也</h1>
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-teal-800">Soya Arakawa / 荒川創也</h1>
 
     <!-- Social Links -->
     <p class="text-lg mb-4">
@@ -226,6 +243,7 @@
       <a href="https://www.instagram.com/soya_ar.tacolv" target="_blank" class="insta-link text-blue-600 hover:underline">@soya_ar.tacolv</a><br>
       <span class="text-gray-600">Check my Instagram for the latest exhibitions, performances, and updates!</span>
     </p>
+    <hr class="divider">
 
     <!-- Bio and Portrait -->
     <div class="mb-8 md:flex md:space-x-6">
@@ -245,6 +263,7 @@
         </figure>
       </div>
     </div>
+    <hr class="divider">
 
     <!-- Downloads -->
     <h2 class="text-2xl font-semibold mb-4">Downloads</h2>
@@ -254,6 +273,7 @@
         <li><a href="portfolio.pdf" download class="text-blue-600 hover:underline"><i class="fas fa-folder-open mr-2"></i>Portfolio (PDF)</a></li>
       </ul>
     </div>
+    <hr class="divider">
 
     <!-- Gallery -->
     <h2 class="text-2xl font-semibold mb-2">Selected Works</h2>
@@ -386,6 +406,7 @@
         <figcaption>Akechan, 2025, Fotocredit Maximilian Kandora</figcaption>
       </figure>
     </div>
+    <hr class="divider">
 
     <!-- Performance Videos -->
     <h2 class="text-2xl font-semibold mb-4">Performance Videos</h2>
@@ -409,6 +430,7 @@
         <iframe src="https://player.vimeo.com/video/613580291" frameborder="0" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
+    <hr class="divider">
 
     <!-- Contact Form -->
     <h2 class="text-2xl font-semibold mb-4">Contact</h2>
@@ -513,6 +535,13 @@
         trail.style.transform = 'scale(0.5)';
         setTimeout(() => trail.remove(), 500);
       }, 50);
+    });
+
+    // Parallax effect for background sketch
+    window.addEventListener('scroll', function() {
+      const scrollY = window.scrollY;
+      document.body.style.setProperty('--scroll', scrollY / 2 + 'px');
+      document.body.style.backgroundPositionY = `calc(50% + ${scrollY * 0.1}px)`;
     });
 
     // Fade-in animation on scroll
