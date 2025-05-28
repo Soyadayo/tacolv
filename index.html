@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Soya Arakawa – Artist Portfolio |performance, installation, improvisation, and drawing </title>
+  <title>Soya Arakawa – Artist Portfolio | Performance, Installation, Improvisation, and Drawing</title>
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="Soya Arakawa is a Japanese artist based in Germany working in performance art, installation, drawing, and improvisational music. His practice blends spatial composition and choreography with contemporary art forms.">
@@ -23,182 +23,213 @@
   <meta name="twitter:image" content="https://www.tacolv.org/portrait.jpg">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f7f3;
+      color: #2b2b2b;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3 {
       font-family: 'Noto Serif', serif;
-      background-color: #fafafa;
-      color: #222;
-      max-width: 800px;
-      margin: auto;
-      padding: 2em;
-      line-height: 1.7;
     }
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 0.2em;
-      border-bottom: 2px solid #888;
-      display: inline-block;
-    }
-    h2 {
-      color: #444;
-      margin-top: 2em;
-    }
-    a {
-      color: #5a7a99;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .social-top {
-      margin-top: 1.5em;
-      font-size: 1.1em;
-      color: #5a7a99;
-    }
-    img.portrait {
-      max-width: 50%;
-      height: auto;
-      margin-top: 1em;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .download-links {
-      background: #f2f2f2;
-      padding: 1em;
-      border-radius: 8px;
-      margin-top: 1em;
-    }
-    .download-links ul {
-      list-style: none;
-      padding: 0;
-    }
-    .download-links li {
-      margin-bottom: 0.5em;
-    }
-    .gallery {
-      display: grid;
-      gap: 1em;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      margin-top: 1em;
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('portrait.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
     }
     .gallery img {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid #ccc;
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
-    .video-grid {
-      display: grid;
-      gap: 1em;
-      grid-template-columns: 1fr;
-    }
-    .video iframe {
-      width: 100%;
-      height: 315px;
-      border-radius: 8px;
-    }
-    form {
-      margin-top: 2em;
-      background: #f9f9f9;
-      padding: 1em;
-      border-radius: 8px;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 0.5em;
-      margin-top: 0.5em;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-family: 'Noto Serif', serif;
-    }
-    button {
-      margin-top: 1em;
-      background-color: #5a7a99;
-      color: white;
-      border: none;
-      padding: 0.6em 1.2em;
-      border-radius: 4px;
+    .gallery img:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
       cursor: pointer;
     }
-    button:hover {
-      background-color: #47617c;
+    #lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+    #lightbox .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+    .video-grid iframe {
+      transition: transform 0.3s ease;
+    }
+    .video-grid iframe:hover {
+      transform: scale(1.02);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (max-width: 768px) {
+      .hero {
+        height: 40vh;
+      }
+      .video-grid iframe {
+        height: 200px;
+      }
     }
   </style>
 </head>
-<body>
-  <h1>Soya Arakawa / 荒川創也</h1>
-
-  <div class="social-top">
-    <p><strong>For recent exhibitions and updates on my artistic activities, please visit my Instagram:</strong><br>
-    <a href="https://www.instagram.com/soya_ar.tacolv" target="_blank">@soya_ar.tacolv</a></p>
-  </div>
-
-  <p><strong>Born:</strong> 1984, Hamamatsu, Japan<br>
-  <strong>Lives and works in:</strong> Krefeld, Germany</p>
-
-  <p>Soya Arakawa studied at Kanazawa College of Art and at the Kunstakademie Düsseldorf under Prof. Rita McBride. His artistic practice spans sculpture, drawing, painting, installation, and performance—including solo performances directed by himself as well as interdisciplinary collaborations in which he appears as a singer, dancer, and instrumentalist.</p>
-
-  <p>Arakawa incorporates choreographic methods into his installations, or merges choreography with spatial arrangements. He often creates and exhibits performance scores, which sometimes serve as the basis for live performances presented in the same context. His works also play with ideas of cultural appropriation, fiction, and self-mythology.</p>
-
-  <img src="portrait.jpg" alt="Portrait of Soya Arakawa" class="portrait">
-
-  <h2>Downloads</h2>
-  <div class="download-links">
-    <ul>
-      <li><a href="cv.pdf" download>📄 Curriculum Vitae (PDF)</a></li>
-      <li><a href="portfolio.pdf" download>📁 Portfolio (PDF)</a></li>
-    </ul>
-  </div>
-
-  <h2>Selected Works</h2>
-  <div class="gallery">
-    <img src="work1.jpg" alt="Artwork 1 by Soya Arakawa">
-    <img src="work2.jpg" alt="Artwork 2 by Soya Arakawa">
-    <img src="work3.jpg" alt="Artwork 3 by Soya Arakawa">
-    <img src="work4.jpg" alt="Artwork 4 by Soya Arakawa">
-    <img src="work5.jpg" alt="Artwork 5 by Soya Arakawa">
-    <img src="work6.jpg" alt="Artwork 6 by Soya Arakawa">
-    <img src="work7.jpg" alt="Artwork 7 by Soya Arakawa">
-    <img src="work8.jpg" alt="Artwork 8 by Soya Arakawa">
-    <img src="work9.jpg" alt="Artwork 9 by Soya Arakawa">
-    <img src="work10.jpg" alt="Artwork 10 by Soya Arakawa">
-    <img src="work11.jpg" alt="Artwork 11 by Soya Arakawa">
-    <img src="work12.jpg" alt="Artwork 12 by Soya Arakawa">
-    <img src="work13.jpg" alt="Artwork 13 by Soya Arakawa">
-    <img src="work14.jpg" alt="Artwork 14 by Soya Arakawa">
-  </div>
-
-  <h2>Performance Videos</h2>
-  <div class="video-grid">
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/JvQOjJbMXzA" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="video">
-      <iframe src="https://player.vimeo.com/video/91800827" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/-_ATdc7x4OQ" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="video">
-      <iframe src="https://player.vimeo.com/video/889123965" frameborder="0" allowfullscreen></iframe>
+<body class="antialiased">
+  <!-- Hero Section -->
+  <div class="hero">
+    <div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-2">Soya Arakawa / 荒川創也</h1>
+      <p class="text-lg md:text-xl">Performance, Installation, Improvisation, Drawing</p>
     </div>
   </div>
 
-  <h2>Contact</h2>
-  <form action="https://formspree.io/f/mnqepkqd" method="POST">
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" required>
+  <!-- Social Links -->
+  <div class="max-w-4xl mx-auto px-4 py-8 fade-in">
+    <p class="text-lg mb-4">
+      <strong>For recent exhibitions and updates, visit my Instagram:</strong><br>
+      <a href="https://www.instagram.com/soya_ar.tacolv" target="_blank" class="text-blue-600 hover:underline">@soya_ar.tacolv</a>
+    </p>
 
-    <label for="email">Email</label>
-    <input type="email" id="email" name="_replyto" required>
+    <!-- Bio -->
+    <div class="mb-8">
+      <p><strong>Born:</strong> 1984, Hamamatsu, Japan<br>
+      <strong>Lives and works in:</strong> Krefeld, Germany</p>
+      <p class="mt-4 text-gray-700 leading-relaxed">
+        Soya Arakawa studied at Kanazawa College of Art and at the Kunstakademie Düsseldorf under Prof. Rita McBride. His artistic practice spans sculpture, drawing, painting, installation, and performance—including solo performances directed by himself as well as interdisciplinary collaborations in which he appears as a singer, dancer, and instrumentalist.
+      </p>
+      <p class="mt-4 text-gray-700 leading-relaxed">
+        Arakawa incorporates choreographic methods into his installations, or merges choreography with spatial arrangements. He often creates and exhibits performance scores, which sometimes serve as the basis for live performances presented in the same context. His works also play with ideas of cultural appropriation, fiction, and self-mythology.
+      </p>
+    </div>
 
-    <label for="message">Message</label>
-    <textarea id="message" name="message" rows="5" required></textarea>
+    <!-- Downloads -->
+    <h2 class="text-2xl font-semibold mb-4">Downloads</h2>
+    <div class="bg-gray-100 p-4 rounded-lg mb-8">
+      <ul class="space-y-2">
+        <li><a href="cv.pdf" download class="text-blue-600 hover:underline">📄 Curriculum Vitae (PDF)</a></li>
+        <li><a href="portfolio.pdf" download class="text-blue-600 hover:underline">📁 Portfolio (PDF)</a></li>
+      </ul>
+    </div>
 
-    <button type="submit">Send</button>
-  </form>
+    <!-- Gallery -->
+    <h2 class="text-2xl font-semibold mb-4">Selected Works</h2>
+    <div class="gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+      <img src="work1.jpg" alt="Artwork 1 by Soya Arakawa" onclick="openLightbox(this.src)">
+      <img src="work2.jpg" alt="Artwork 2 by Soya Arakawa" onclick="openLightbox(this.src)">
+      <img src="work3.jpg" alt="Artwork 3 by Soya Arakawa" onclick="openLightbox(this.src)">
+      <img src="work4.jpg" alt="Artwork 4 by Soya Arakawa" onclick="openLightbox(this.src)">
+      <img src="work5.jpg" alt="Artwork 5 by Soya Arakawa" onclick="openLightbox(this.src)">
+      <img src="work6.jpg" alt="Artwork 6 by Soya Arakawa" onclick="openLightbox(this.src)">
+      <img src="work7.jpg" alt="Artwork 7 by Soya Arakawa" onclick="openLightbox(this.src)">
+      <img src="work8.jpg" alt="Artwork 8 by Soya Arakawa" onclick="openLightbox(this.src)">
+      <img src="work9.jpg" alt="Artwork 9 by Soya Arakawa" onclick="openLightbox(this.src)">
+      <img src="work10.jpg" alt="Artwork 10 by Soya Arakawa" onclick="openLightbox(this.src)">
+      <img src="work11.jpg" alt="Artwork 11 by Soya Arakawa" onclick="openLightbox(this.src)">
+      <img src="work12.jpg" alt="Artwork 12 by Soya Arakawa" onclick="openLightbox(this.src)">
+      <img src="work13.jpg" alt="Artwork 13 by Soya Arakawa" onclick="openLightbox(this.src)">
+      <img src="work14.jpg" alt="Artwork 14 by Soya Arakawa" onclick="openLightbox(this.src)">
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" onclick="closeLightbox()">
+      <span class="close">&times;</span>
+      <img id="lightbox-img" src="">
+    </div>
+
+    <!-- Performance Videos -->
+    <h2 class="text-2xl font-semibold mb-4">Performance Videos</h2>
+    <div class="video-grid grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/JvQOjJbMXzA" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="video">
+        <iframe src="https://player.vimeo.com/video/91800827" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/-_ATdc7x4OQ" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="video">
+        <iframe src="https://player.vimeo.com/video/889123965" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <h2 class="text-2xl font-semibold mb-4">Contact</h2>
+    <div class="bg-gray-100 p-6 rounded-lg">
+      <div action="https://formspree.io/f/mnqepkqd" method="POST" class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+          <input type="text" id="name" name="name" required class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" id="email" name="_replyto" required class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+          <textarea id="message" name="message" rows="5" required class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        </div>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      lightbox.style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.style.display = 'none';
+    }
+
+    // Fade-in animation on scroll
+    const fadeIns = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeIn 0.8s ease-out forwards';
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeIns.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
