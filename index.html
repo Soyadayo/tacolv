@@ -188,6 +188,41 @@
       margin-top: 0.5rem;
     }
 
+    /* Lightbox styling */
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    #lightbox-img {
+      max-width: 90%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover {
+      color: #ff6b6b;
+    }
+
     @media (max-width: 768px) {
       .portrait {
         max-width: 80%;
@@ -230,9 +265,17 @@
     <!-- Bio and Portrait -->
     <div class="mb-8 md:flex md:space-x-6">
       <div class="md:w-1/2">
-        <p><strong>Born:</strong> 1984, Hamamatsu, Japan<br>
-        <strong>Lives and works in:</strong> Krefeld, Germany</p>
-        <p class="mt-4 text-gray-700 leading-relaxed">
+        <div class="flex flex-col space-y-2 mb-4">
+          <div class="flex items-baseline">
+            <strong class="w-32">Born:</strong>
+            <span>1984, Hamamatsu, Japan</span>
+          </div>
+          <div class="flex items-baseline">
+            <strong class="w-32">Lives and works in:</strong>
+            <span>Krefeld, Germany</span>
+          </div>
+        </div>
+        <p class="text-gray-700 leading-relaxed">
           Soya Arakawa, born in Hamamatsu, Japan, in 1984, is an artist based in Krefeld, Germany. Trained at Kanazawa College of Art and Kunstakademie Düsseldorf under Prof. Rita McBride, he explores sculpture, drawing, installation, and performance. His practice integrates choreography with spatial composition, creating dynamic installations and performance scores that often form the basis for live interdisciplinary works, where he performs as a singer, dancer, or instrumentalist. Arakawa’s art engages with themes of cultural identity, fiction, and self-mythology, blending contemporary and experimental forms.
         </p>
       </div>
@@ -358,7 +401,7 @@
     </div>
 
     <!-- Lightbox -->
-    <div id="lightbox" onclick="closeLightbox()">
+    <div id="lightbox">
       <span class="close">×</span>
       <img id="lightbox-img" src="">
     </div>
@@ -414,6 +457,8 @@
       const img = document.getElementById('lightbox-img');
       img.src = src;
       lightbox.style.display = 'flex';
+      // Prevent closing when clicking on the image
+      img.onclick = function(e) { e.stopPropagation(); };
     }
 
     function closeLightbox() {
