@@ -63,14 +63,14 @@
     .nav-container {
       display: flex;
       align-items: center;
-      padding: 0.67rem 0;
-      max-width: 1400px; /* Increased from 1280px */
+      padding: 0.4rem 0; /* Reduced from 0.67rem */
+      max-width: 1400px;
       margin: 0 auto;
     }
     .nav-name {
-      font-size: 1rem; /* Slightly increased from 0.9rem */
+      font-size: 0.95rem; /* Reduced from 1rem */
       color: #2b2b2b;
-      padding: 10px 15px;
+      padding: 8px 15px; /* Reduced from 10px 15px */
       text-transform: none;
       font-weight: 600;
     }
@@ -82,7 +82,7 @@
     }
     nav a {
       color: #2b2b2b;
-      padding: 10px 20px; /* Increased from 10px 15px */
+      padding: 8px 20px; /* Reduced from 10px 20px */
       font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -92,10 +92,16 @@
       color: #38b2ac;
       text-decoration: underline;
     }
+    nav a.instagram-link {
+      padding: 8px 10px; /* Smaller padding for icon */
+    }
+    nav a.instagram-link i {
+      font-size: 1rem;
+    }
     .hero {
       position: relative;
       width: 100%;
-      margin-top: 40px;
+      margin-top: 30px; /* Adjusted for narrower nav */
       overflow: hidden;
       padding: 20px 0;
     }
@@ -198,7 +204,7 @@
       width: 96px;
       height: auto;
       opacity: 0.6;
-      z-index: 0;
+      z-index: 100; /* Increased for drone3 to overlap content */
       pointer-events: auto;
       transition: transform 0.3s ease, opacity 0.3s ease;
       will-change: transform;
@@ -286,12 +292,15 @@
     }
     @media (max-width: 768px) {
       .portrait { max-width: 80%; }
-      .nav-container { flex-direction: column; align-items: center; padding: 0.5rem 0; }
-      .nav-name { font-size: 0.9rem; padding: 8px 10px; }
+      .nav-container { flex-direction: column; align-items: center; padding: 0.3rem 0; }
+      .nav-name { font-size: 0.85rem; padding: 6px 10px; }
       nav ul { justify-content: center; flex-wrap: wrap; }
-      nav a { padding: 8px 12px; font-size: 0.85rem; } /* Adjusted padding for mobile */
+      nav a { padding: 6px 12px; font-size: 0.85rem; }
+      nav a.instagram-link { padding: 6px 10px; }
+      nav a.instagram-link i { font-size: 0.9rem; }
       .hero img { max-width: 80%; max-height: 50vh; }
       .hero-caption { font-size: 0.9rem; padding: 8px 15px; }
+      .hero { margin-top: 60px; } /* Adjusted for mobile nav height */
     }
     .fade-in {
       opacity: 0;
@@ -358,6 +367,7 @@
 <body class="antialiased">
   <img src="drone.png" alt="Floating drone sketch" class="floating-object" id="drone1">
   <img src="drone2.png" alt="Floating drone2 sketch" class="floating-object" id="drone2">
+  <img src="drone3.png" alt="Floating drone3 sketch" class="floating-object" id="drone3">
   <nav>
     <div class="nav-container">
       <span class="nav-name">Soya Arakawa</span>
@@ -367,6 +377,7 @@
         <li><a href="#videos" aria-label="Jump to Videos section">Videos</a></li>
         <li><a href="#contact" aria-label="Jump to Contact section">Contact</a></li>
         <li><a href="#cv" aria-label="Jump to CV section">CV</a></li>
+        <li><a href="https://www.instagram.com/soya_ar.tacolv" target="_blank" class="instagram-link" aria-label="Visit Soya Arakawa's Instagram"><i class="fab fa-instagram"></i></a></li>
       </ul>
     </div>
   </nav>
@@ -730,10 +741,9 @@
           </li>
           <li><strong>2012:</strong>
             <ul>
-              <li><em>Inside the spaceship of VSC</em>, collaborative performance with Vasileios Zarifopoulos at Asta Ausstellungsraum, Düsseldorf, Germany</li>
+              <li><em>Inside the spaceship of VSC</em>, collaborative performance with Vasileios Zarikatofis, Asta at Ausstellungsraum, Düsseldorf, Germany</li>
             </ul>
-          </li>
-          <li><strong>2011:</strong>
+            <li><strong>2011:</strong>
             <ul>
               <li><em>Spot</em>, Galerie Arnaud Lefebvre, Paris, France</li>
               <li><em>Spot</em>, Sammlung Philara, Düsseldorf</li>
@@ -744,7 +754,7 @@
       <details>
         <summary>Solo Exhibitions</summary>
         <ul>
-          <li>2024: <em>Akechan</em>, Pulverhaus beim Schlosstheater Moers, Moers, Germany</li>
+          <li>2024: <em>Akechan</em>, Pulverhaus beim Schlosstheater, Moers, Germany</li>
           <li>2016: <em>Rat Rat</em>, Room with a view, Düsseldorf, Germany</li>
           <li>2015: <em>I’m a boy</em>, Te-te, Kunstraum für bewegte Ideen, Düsseldorf, Germany</li>
           <li>2011: <em>Eine spektakuläre Einzelausstellung - die Antwort in meinen 30ern</em>, SHaus, Krefeld, Germany</li>
@@ -753,58 +763,60 @@
       <details>
         <summary>Group Exhibitions</summary>
         <ul>
-          <li>2025: <em>Akechan</em>, BETWEEN BELONGING, Weltkunstzimmer, Düsseldorf, Germany</li>
-          <li>2025: <em>Morisue</em>, Thisthat Gallery, Düsseldorf</li>
+          <li>2025: <em>Akechan</em>, BETWEEN BELONGING, Berlin, Germany</li>
+          <li>2025: <em>Morisue</em>, ThisthatGallery, Düsseldorf</li>
           <li>2024: <em>Bellin</em>, Doppel Pass, Hawerkamp 31, Münster</li>
-          <li>2024: <em>Day Off</em>, Antagata Dokosa, Nora, Tokyo, Japan</li>
-          <li>2023: <em>Score A-B-C</em>, nun lasst uns am Rhein zusammen treffen, um gemeinsam zu vergessen, dass ein Fluss auch eine Grenze sein kann, Kunst im Hafen e.V., Düsseldorf, Germany</li>
+          <li>2024: <em>Day Off</em>, Antagata Dokoso, Nora, Tokyo</li>
+          <li>2023: <em>Score A-B-C</em>, nun las Kunst aus Krefeld, Kunst im Hafen e.V., Düsseldorf, Germany</li>
           <li>2023: <em>Bellin</em>, Aqua Artefakt, Wasserturm an der Gutenbergstraße, Krefeld, Germany</li>
           <li>2023: <em>Langer Salon</em>, Produktive Räume. Kunst und Design aus Krefeld, Haus Lange Esters, Krefeld, Germany</li>
           <li>2023: <em>鏡板 / Kagami-Ita</em>, triple is funny, but double makes the money, Kunsthalle Münster, Germany</li>
           <li>2022: <em>Bonded</em>, Bloom, Düsseldorf</li>
           <li>2022: <em>Effi & Pym</em>, Muzeul Național al Hărților și Cărții Vechi, Bucharest</li>
-          <li>2022: <em>Beatrice von Babel</em>, Under the boat, Fondazione Bevilacqua La Masa, Sala del Camino, Complesso SS. Cosma e Damiano, Venezia, Italy</li>
-          <li>2022: <em>Messengers: TAV & TOKAS 15th Anniversary Commemorative Exhibition</em>, Taipei Artist Village, Taipei, Taiwan</li>
+          <li>2022: <em>Beatrice von Babel</em>, Under the Boat, Fondazione Bevilacqua La Masa, Sala del Camino, Venezia, Italy</li>
+          <li>2022: <em>Messengers: TAV & TOKAS 15th Anniversary Commemorative Exhibition</em>, Taipei Artist Village, Taipei</li>
           <li>2021: <em>友達と – „tomodachito“. Mit Freund*innen</em>, Kunsthalle Düsseldorf, Düsseldorf</li>
           <li>2018: <em>A Letter</em>, Park Kultur, Düsseldorf, Germany</li>
-          <li>2017: <em>Room with a view</em>, Room with a view, Düsseldorf, Germany</li>
-          <li>2016: <em>Mary & der Vulkan. Eine meteorologische Phantasmagorie</em>, KIT, Düsseldorf, Germany</li>
-          <li>2015: <em>Hochdruck</em>, Galerie Spletstößer, Kaarst, Germany</li>
-          <li>2015: <em>5 x 3</em>, Kunstraum Düsseldorf, Düsseldorf, Germany</li>
-          <li>2015: <em>69. Internationale Kunstausstellung</em>, Kunstmuseum Solingen, Solingen, Germany</li>
-          <li>2015: <em>The integrated short-short</em>, Kunstakademie Düsseldorf, Germany</li>
-          <li>2015: <em>Believing History, River runs through it</em>, Kloster Lorsch, Lorsch, Germany</li>
+          <li>2017: <em>Room with a view</em>, Room with a View, Düsseldorf, Germany</li>
+          <li>2016: <em>Mary & der Vulkan. Eine meteorologische Phantasmagorie</em>, KIT, Düsseldorf</li>
+          <li>2015: <em>Hochdruck</em>, Galerie Spletstößer, Kaarst</li>
+          <li>2015: <em>5 x 3</em>, Kunstraum Düsseldorf, Düsseldorf</li>
+          <li>2015: <em>69. Internationale Bergische Kunstausstellung</em>, Kunstmuseum Solingen</li>
+          <li>2015: <em>The integrated short-short</em>, Kunstakademie Düsseldorf</li>
+          <li>2015: <em>Believing History, River runs through it</em>, Kloster Lorsch</li>
           <li>2015: <em>General Exposure</em>, Kunstpalast, Düsseldorf</li>
           <li>2015: <em>Spring garden in a certain place</em>, Kunstakademie Düsseldorf</li>
-          <li>2015: <em>Object Manipulating Economy / Economy Manipulating Object</em> (Installation: Ten thousand leaves and a big fish at the former laundry shop August Fröhls), Mönchengladbach, Germany</li>
+          <li>2015: <em>Object Manipulating Economy / Economy Manipulating Object</em> (Installation: Ten thousand leaves and a big fish at the former laundry shop August Fröhls), Mönchengladbach</li>
           <li>2014: <em>Erkenntnis</em>, Galerie M29, Köln</li>
-          <li>2013: <em>VARIANTE FANTASTICO_endloser Heimweg, Nashinamure</em>, Herz Jesu Kirche, Wuppertal, Germany</li>
-          <li>2013: <em>Sportsgeist</em>, Malkasten, Düsseldorf, Germany</li>
-          <li>2013: <em>Project Cicciolino</em>, Kanazawa Bidai Gallery, Kanazawa, Japan</li>
-          <li>2013: <em>Project Cicciolino</em>, Kunstakademie Düsseldorf, Germany</li>
+          <li>2013: <em>VARIANTE FANTASTICO_endloser Heimweg, Nashinamure</em>, Herz Jesu Kirche, Wuppertal</li>
+          <li>2013: <em>Sportsgeist</em>, Malkasten, Düsseldorf</li>
+          <li>2013: <em>Project Cicciolino</em>, Kanazawa Bidai Gallery, Kanazawa</li>
+          <li>2013: <em>Project Cicciolino</em>, Kunstakademie Düsseldorf</li>
           <li>2012: <em>Dokumentation</em>, MEM, Wuppertal</li>
-          <li>2012: <em>Kunstpunkte Düsseldorf</em>, Kunst im Hafen e.v., Düsseldorf, Germany</li>
-          <li>2011: <em>Kunstpunkte Düsseldorf</em>, Kunst im Hafen e.v., Düsseldorf, Germany</li>
-          <li>2011: <em>MAULWURFTREMOR</em>, Villa Karl Marx, Viersen, Germany</li>
+          <li>2012: <em>Kunstpunkte Düsseldorf</em>, Kunst im Hafen e.v., Düsseldorf</li>
+          <li>2011: <em>Kunstpunkte Düsseldorf</em>, Kunst im Hafen e.v., Düsseldorf</li>
+          <li>2011: <em>MAULWURFTREMOR</em>, Villa Karl Marx, Viersen</li>
           <li>2011: <em>Tops</em>, Sammlung Philara, Düsseldorf</li>
-          <li>2011: <em>Legend of the Artist</em>, contribution to class exhibition, Kunstakademie Düsseldorf, Germany</li>
-          <li>2010: <em>I will be a big star!</em>, contribution to group exhibition at Kunstakademie Düsseldorf, Germany</li>
-          <li>2009: <em>I wanna be a big star!</em>, contribution to group exhibition at Tokyo Wonder Site Hongo, Tokyo, Japan</li>
+          <li>2011: <em>Legend of the Artist</em>, contribution to class exhibition, Kunstakademie Düsseldorf</li>
+          <li>2010: <em>I will be a big star!</em>, contribution to group exhibition at Kunstakademie Düsseldorf</li>
+          <li>2009: <em>I wanna be a big star!</em>, contribution to group exhibition at Tokyo Wonder Site Hongo, Japan</li>
         </ul>
       </details>
-      <p class="text-sm text-gray-500 text-center mt-8">© 2025 Soya Arakawa</p>
+      <p class="text-sm text-gray-500 text-center mt-6">© 2025 Soya Arakawa</p>
     </div>
     <script>
-      // Smooth scrolling for jump links
+      // Smooth scrolling for navigation links
       document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          target.scrollIntoView({ behavior: 'smooth' });
+          if (this.getAttribute('href').startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
         });
       });
 
-      // Highlight active nav link
+      // Highlight active nav link on scroll
       const sections = document.querySelectorAll('section');
       const navLinks = document.querySelectorAll('nav a');
       window.addEventListener('scroll', () => {
@@ -825,8 +837,9 @@
 
       // Floating drones
       const drones = [
-        { element: document.getElementById('drone1'), x: 100, y: 100, vx: 1, vy: 1 },
-        { element: document.getElementById('drone2'), x: window.innerWidth - 200, y: window.innerHeight / 2, vx: -1, vy: 1 }
+        { element: document.getElementById('drone1'), x: 100, y: 100, vx: 1, vy: 1, restricted: true },
+        { element: document.getElementById('drone2'), x: window.innerWidth - 200, y: window.innerHeight / 2, vx: -1, vy: 1, restricted: true },
+        { element: document.getElementById('drone3'), x: window.innerWidth - 150, y: window.innerHeight - 150, vx: -1, vy: -1, restricted: false }
       ];
       let contentWidth = 1280;
       let contentLeft = (window.innerWidth - contentWidth) / 2;
@@ -846,9 +859,15 @@
           drone.x += drone.vx;
           drone.y += drone.vy;
 
-          // Boundaries: keep drones outside content area (left of contentLeft or right of contentRight)
-          const leftBound = drone.x < contentLeft ? 0 : contentRight;
-          const rightBound = drone.x > contentRight ? window.innerWidth - drone.element.offsetWidth : contentLeft - drone.element.offsetWidth;
+          // Boundaries
+          let leftBound, rightBound;
+          if (drone.restricted) {
+            leftBound = drone.x < contentLeft ? 0 : contentRight;
+            rightBound = drone.x > contentRight ? window.innerWidth - drone.element.offsetWidth : contentLeft - drone.element.offsetWidth;
+          } else {
+            leftBound = 0;
+            rightBound = window.innerWidth - drone.element.offsetWidth;
+          }
           const topBound = 0;
           const bottomBound = window.innerHeight - drone.element.offsetHeight;
 
