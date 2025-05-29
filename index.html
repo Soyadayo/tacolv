@@ -64,11 +64,11 @@
       display: flex;
       align-items: center;
       padding: 0.67rem 0;
-      max-width: 1280px;
+      max-width: 1400px; /* Increased from 1280px */
       margin: 0 auto;
     }
     .nav-name {
-      font-size: 0.9rem;
+      font-size: 1rem; /* Slightly increased from 0.9rem */
       color: #2b2b2b;
       padding: 10px 15px;
       text-transform: none;
@@ -82,7 +82,7 @@
     }
     nav a {
       color: #2b2b2b;
-      padding: 10px 15px;
+      padding: 10px 20px; /* Increased from 10px 15px */
       font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -287,9 +287,9 @@
     @media (max-width: 768px) {
       .portrait { max-width: 80%; }
       .nav-container { flex-direction: column; align-items: center; padding: 0.5rem 0; }
-      .nav-name { font-size: 0.85rem; padding: 8px 10px; }
+      .nav-name { font-size: 0.9rem; padding: 8px 10px; }
       nav ul { justify-content: center; flex-wrap: wrap; }
-      nav a { padding: 8px 10px; font-size: 0.85rem; }
+      nav a { padding: 8px 12px; font-size: 0.85rem; } /* Adjusted padding for mobile */
       .hero img { max-width: 80%; max-height: 50vh; }
       .hero-caption { font-size: 0.9rem; padding: 8px 15px; }
     }
@@ -934,7 +934,7 @@
               return;
             }
             lightboxOverlay.innerHTML = `
-              <span class="lightbox-close">&times;</span>
+              <span class="lightbox-close">×</span>
               <div class="lightbox-content">
                 <img src="${imageUrl}" class="lightbox-image" alt="${imageCaption || 'Gallery Image'}">
                 ${imageCaption ? `<p class="lightbox-caption">${imageCaption}</p>` : ''}
