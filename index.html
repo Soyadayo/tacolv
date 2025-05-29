@@ -52,6 +52,9 @@
     body {
       font-family: 'Inter', sans-serif;
       background-color: #ffffff;
+      background-image: url('drawing1.jpg');
+      background-repeat: repeat;
+      background-size: auto;
       color: #2b2b2b;
       scroll-behavior: smooth;
       position: relative;
@@ -92,15 +95,14 @@
     .hero {
       position: relative;
       width: 100%;
-      max-height: 80vh;
-      overflow: hidden;
       margin-top: 60px;
+      overflow: hidden;
     }
 
     .hero img {
       width: 100%;
       height: auto;
-      object-fit: cover;
+      object-fit: contain;
     }
 
     .hero-caption {
@@ -300,6 +302,13 @@
       line-height: 1.5;
     }
 
+    /* Content sections overlay for readability */
+    .content-section {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 8px;
+    }
+
     @media (max-width: 768px) {
       .portrait {
         max-width: 80%;
@@ -318,6 +327,10 @@
       .hero-caption {
         font-size: 0.9rem;
         padding: 8px 15px;
+      }
+
+      .hero img {
+        max-height: 60vh;
       }
     }
 
@@ -426,7 +439,7 @@
 
   <div class="max-w-5xl mx-auto px-4 py-8">
     <!-- Works -->
-    <section id="works" class="fade-in">
+    <section id="works" class="fade-in content-section">
       <h2 class="text-3xl font-semibold mb-4">Selected Works</h2>
       <p class="text-sm italic text-gray-600 mb-4">Click images to view larger</p>
       <div class="gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
@@ -557,7 +570,7 @@
           <figcaption>Akechan, 2025, Photo credit Maximilian Kandora</figcaption>
         </figure>
         <figure>
-          <a href="#" class="js-lightbox-trigger" data-src="work15.jpg" data-caption="River runs through it 2015 in Lorsch">
+          <a href="#" class="js-lightbox-trigger" data-src="work15.jpg" data-caption="River runs through it 2016 in Lorsch">
             <div class="relative">
               <img src="work15.jpg" alt="Artwork by Soya Arakawa" loading="lazy">
               <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
@@ -578,12 +591,13 @@
     </section>
 
     <!-- About -->
-    <section id="about" class="fade-in">
+    <section id="about" class="fade-in content-section">
       <h1 class="text-4xl md:text-5xl font-semibold mb-4 text-teal-800">Soya Arakawa / 荒川創也</h1>
       <p class="text-lg mb-4">
-        <strong>Instagram</strong>
+        <strong>Instagram:</strong>
         <a href="https://www.instagram.com/soya_ar.tacolv" target="_blank" class="insta-link hover:underline">@soya_ar.tacolv</a><br>
-        <span class="text-gray-600">Check my Instagram for the latest updates on exhibitions and performances!</span></p>
+        <span class="text-gray-600">Check my Instagram for the latest updates on exhibitions and performances!</span>
+      </p>
       <div class="mb-8 md:flex md:space-x-6">
         <div class="md:w-1/2">
           <p class="text-gray-700 text-left space-y-2 mb-4">
@@ -591,7 +605,7 @@
             <span>Lives and works in: Krefeld, Germany</span>
           </p>
           <p class="text-gray-700 leading-relaxed text-left">
-            Soya Arakawa, born in Hamamtsu-shi, Japan, in 1984, is a Japanese artist based in Krefeld, Germany. Trained at Kanazawa College of Art and Kunstakademie Düsseldorf under Prof. Rita McBride, he explores sculpture, drawing, installation, and performance. His practice integrates choreography with spatial composition, creating dynamic installations and performance scores that often form the basis for live interdisciplinary works, where he performs as a singer, dancer, or instrumentalist. Arakawa’s art engages with themes of cultural identity, fiction, and self-mythology, blending contemporary and experimental forms.
+            Soya Arakawa, born in Hamamatsu-shi, Japan, in 1984, is a Japanese artist based in Krefeld, Germany. Trained at Kanazawa College of Art and Kunstakademie Düsseldorf under Prof. Rita McBride, he explores sculpture, drawing, installation, and performance. His practice integrates choreography with spatial composition, creating dynamic installations and performance scores that often form the basis for live interdisciplinary works, where he performs as a singer, dancer, or instrumentalist. Arakawa’s art engages with themes of cultural identity, fiction, and self-mythology, blending contemporary and experimental forms.
           </p>
           <div class="mt-6">
             <h3 class="text-xl font-semibold mb-2">Downloads</h3>
@@ -611,17 +625,17 @@
     </section>
 
     <!-- Videos -->
-    <section id="videos" class="fade-in">
+    <section id="videos" class="fade-in content-section">
       <h2 class="text-3xl font-semibold mb-4">Performance Videos</h2>
       <div class="video-grid grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
         <div class="video">
-          <iframe src="https://www.youtube.com/embed/9EqI5Vuyzrc" title="Performance Video 1 by Soya Arakawa" frameborder="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <iframe src="https://www.youtube.com/embed/9EqI5Vuyzrc" title="Performance Video 1 by Soya Arakawa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video">
           <iframe src="https://www.youtube.com/embed/JvQOjJbMXzA" title="Performance Video 2 by Soya Arakawa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video">
-          <iframe src="https://player.vimeo.com/video/91800827" title="Performance Video 3 Soya Arakawa" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <iframe src="https://player.vimeo.com/video/91800827" title="Performance Video 3 by Soya Arakawa" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video">
           <iframe src="https://www.youtube.com/embed/-_ATdc7x4OQ" title="Performance Video 4 by Soya Arakawa" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
@@ -636,7 +650,7 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="fade-in">
+    <section id="contact" class="fade-in content-section">
       <h2 class="text-3xl font-semibold mb-4">Contact</h2>
       <div class="max-w-lg mx-auto w-full bg-white p-6 rounded-lg mb-6">
         <form action="https://formspree.io/f/mnqepkqd" method="POST" class="space-y-4">
@@ -658,8 +672,8 @@
     </section>
 
     <!-- CV -->
-    <section id="cv" class="fade-in">
-      <h2 class="text-3xl font-semibold mb-6">Curriculum Vitae</a></h2>
+    <section id="cv" class="fade-in content-section">
+      <h2 class="text-3xl font-semibold mb-6">Curriculum Vitae</h2>
       <details open>
         <summary>Artist Information</summary>
         <ul>
@@ -755,8 +769,8 @@
           <li><strong>2019:</strong>
             <ul>
               <li><em>Fermata</em>, directed by miu at FFT Düsseldorf, Germany</li>
-              <li><em>Tag H Ex</em>, directed ‘em’ by miu at FFT Düsseldorf, Germany</li>
-              <li><em>The Teacher</em>’em’, directed ‘em’ by Agnes Scherer at Kinderhook &amp; Caracas, Berlin, Germany</li>
+              <li><em>Tag H Ex</em>, directed by miu at FFT Düsseldorf, Germany</li>
+              <li><em>The Teacher</em>, directed by Agnes Scherer at Kinderhook & Caracas, Berlin, Germany</li>
             </ul>
           </li>
           <li><strong>2018:</strong>
@@ -827,7 +841,7 @@
           <li>2023: <em>Langer Salon</em>, Produktive Räume. Kunst und Design aus Krefeld, Haus Lange Esters, Krefeld, Germany</li>
           <li>2023: <em>鏡板 / Kagami-Ita</em>, triple is funny, but double makes the money, Kunsthalle Münster, Germany</li>
           <li>2022: <em>Bonded</em>, Bloom, Düsseldorf</li>
-          <li>2022: <em>Effi & Pym</em>, Muzeul Național al Hărților și Cărții Vechi, Bucharest</li>
+          <li>2022: <em>Effi & Pym</em>, Muzeul Național al Hărților și Cărții Vechi, Bucharest, Romania</li>
           <li>2022: <em>Beatrice von Babel</em>, Under the boat, Fondazione Bevilacqua La Masa, Sala del Camino, Complesso SS. Cosma e Damiano, Venezia, Italy</li>
           <li>2022: <em>Messengers: TAV & TOKAS 15th Anniversary Commemorative Exhibition</em>, Taipei Artist Village, Taipei, Taiwan</li>
           <li>2021: <em>友達と – „tomodachito“. Mit Freund*innen</em>, Kunsthalle Düsseldorf, Düsseldorf</li>
@@ -837,11 +851,11 @@
           <li>2015: <em>Hochdruck</em>, Galerie Spletstößer, Kaarst, Germany</li>
           <li>2015: <em>5 x 3</em>, Kunstraum Düsseldorf, Düsseldorf, Germany</li>
           <li>2015: <em>69. Internationale Kunstausstellung</em>, Kunstmuseum Solingen, Solingen, Germany</li>
-          <li>2015: <em>The integrated short-short</em>, Kunstakademie Düsseldorf, Germany</li>
+          <li>2015: <em>The integrated short</em>, Kunstakademie Düsseldorf, Germany</li>
           <li>2015: <em>Believing History, River runs through it</em>, Kloster Lorsch, Lorsch, Germany</li>
           <li>2015: <em>General Exposure</em>, Kunstpalast, Düsseldorf</li>
           <li>2015: <em>Spring garden in a certain place</em>, Kunstakademie Düsseldorf</li>
-          <li>2015: <em>Object Manipulating Economy / Economy Manipulating Object</em> (Installation: Ten thousand leaves and a big fish at the former laundry shop August Fröhls), Mönchengladbach, Germany</li>
+          <li>2015: <em>Object Manipulating Economy / Economy Manipulating Object</em> (Installation: Ten thousand leaves and a big fish at the former laundry shop August Fröhls, Mönchengladbach, Germany</li>
           <li>2014: <em>Erkenntnis</em>, Galerie M29, Köln</li>
           <li>2013: <em>VARIANTE FANTASTICO_endloser Heimweg, Nashinamure</em>, Herz Jesu Kirche, Wuppertal, Germany</li>
           <li>2013: <em>Sportsgeist</em>, Malkasten, Düsseldorf, Germany</li>
@@ -852,18 +866,18 @@
           <li>2011: <em>Kunstpunkte Düsseldorf</em>, Kunst im Hafen e.v., Düsseldorf, Germany</li>
           <li>2011: <em>MAULWURFTREMOR</em>, Villa Karl Marx, Viersen, Germany</li>
           <li>2011: <em>Tops</em>, Sammlung Philara, Düsseldorf</li>
-          <li>2011: <em>Legend of the Artist</em>, contribution to class exhibition, Kunstakademie Düsseldorf, Germany</li>
-          <li>2010: <em>I will be a big star!</em>, contribution to group exhibition at Kunstakademie Düsseldorf, Germany</li>
-          <li>2009: <em>I wanna be a big star!</em>, contribution to group exhibition at Tokyo Wonder Site Hongo, Tokyo, Japan</li>
+          </li>2011: <em>Legend of the Artist</em>, contribution to class exhibition, Kunstakademie Düsseldorf, Germany</li>
+          <li>2010: </em>I will be a big star!</em>, contribution to group exhibition at Kunstakademie Düsseldorf, Germany</li>
+          <li>2009: </em>I wanna be a big star!</em>, contribution to group exhibition at Tokyo Wonder Site Hongo, Tokyo, Japan</li>
         </ul>
-      </details>
+    </details>
 
-      <p class="text-sm text-gray-500 text-center mt-8">© Soya Arakawa 2025</p>
+      <p class="text-sm text-center text-gray-500 mt-8">© Soya Arakawa 2025</p>
     </section>
   </div>
 
   <script>
-    // Smooth scrolling for jump links
+    // Smooth scrolling for navigation links
     document.querySelectorAll('nav a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -872,7 +886,7 @@
       });
     });
 
-    // Highlight active nav link
+    // Highlight active navigation link
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav a');
     window.addEventListener('scroll', () => {
@@ -893,8 +907,8 @@
 
     // Floating drones animation
     const drones = [
-      { element: document.getElementById('drone1'), x: 100, y: 100, vx: 1, vy: 1 },
-      { element: document.getElementById('drone2'), x: window.innerWidth - 200, y: window.innerHeight / 2, vx: -1, vy: 1 }
+      { element: document.getElementById('drone1'), x: 100, y: 0, vx: 1, vy: 1 },
+      { element: document.getElementById('drone2'), x: window.innerWidth - 200, y: window.innerHeight / 2, vx: -0.6, vy: 1 }
     ];
 
     let contentWidth = 1280;
@@ -1026,7 +1040,7 @@
         }
       });
 
-      // Close lightbox on escape
+      // Close lightbox on escape key
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && lightboxOverlay.classList.contains('active')) {
           closeLightbox();
@@ -1041,56 +1055,3 @@
   </script>
 </body>
 </html>
-```
-
-### Changes Made
-1. **Fixed Syntax Error**:
-   - Corrected `lightboxOverlay.classList.add 'active'` to `lightboxOverlay.classList.add('active')` in the lightbox functionality.
-2. **Drone Enhancements**:
-   - Added `updateBoundaries()` to handle window resizing, updating `contentWidth`, `contentLeft`, and `contentRight` dynamically.
-   - Called `updateBoundaries()` on load and on `resize` event.
-3. **CV Styling**:
-   - Changed CV link hover color from `hover:text-teal-400` to `hover:text-teal-800` to match the name and nav hover color (`#38b2ac`).
-   - Updated email and phone to clickable links (`<a href="mailto:..."`, `<a href="tel:...">`).
-4. **Minor Fixes**:
-   - Fixed typo in CV section: “Photo credit.” to “Photo credit” (consistent punctuation).
-   - Updated gallery captions to use “Photo credit” consistently (e.g., “Fotocredit” → “Photo credit”).
-   - Corrected comment typo: “fadeIn-in” → “fade-in” in fade-in animation section.
-
-### Testing Steps
-1. **Verify Lightbox**:
-   - Click a gallery image (e.g., `work1.jpg`) to ensure the lightbox opens with the `active` class.
-   - Check that the image and caption (e.g., “Bellin (Part), 2023”) display correctly.
-   - Close the lightbox using the “×” button, overlay click, or Escape key.
-   - Open the browser console (F12 → Console) to confirm no `SyntaxError` occurs.
-2. **Test Drones**:
-   - Resize the browser window and verify drones stay within boundaries (avoiding content area).
-   - Hover over drones to see scale effect; move the mouse to confirm repulsion.
-3. **Check CV**:
-   - Confirm email, phone, and website links are clickable and use `#38b2ac` on hover.
-   - Expand/collapse `<details>` to ensure all entries (especially group exhibitions) are correct.
-4. **General Functionality**:
-   - Test navigation: Click links (Works, About, Videos, Contact, CV) to verify smooth scrolling and active state (teal underline).
-   - Check gallery: Ensure 16 images load with staggered fade-ins and pulsing magnifying glass.
-   - Verify videos: Confirm all six (YouTube: `9EqI5Vuyzrc`, `JvQOjJbMXzA`, `-_ATdc7x4OQ`; Vimeo: `91800827`, `889123965`, `613580291`) play.
-   - Test form: Submit a test message via Formspree (`https://formspree.io/f/mnqepkqd`).
-   - Confirm playful elements: Drones scale on hover, cursor trail has random sizes, Instagram link shows `✨`.
-5. **Local Testing**:
-   - Save `index.html` and assets (`work1.jpg`–`work17.jpg`, `portrait.jpg`, `drone.png`, `drone2.png`, `cv.pdf`, `portfolio.pdf`) in a directory.
-   - Run: `python -m http.server` and access `http://localhost:8000`.
-   - Clear cache (`Ctrl+Shift+R`) if issues occur.
-6. **Server**:
-   - Upload assets to your server (e.g., `https://www.tacolv.org/`).
-   - Verify file paths (case-sensitive) and ensure iframes load.
-7. **Browsers**: Test in Chrome, Firefox, Edge to confirm compatibility.
-
-### Notes
-- **Error Fix**: The lightbox syntax error is resolved, and the lightbox should now function correctly.
-- **Color Palette**: Maintained `#ffffff`, `#2b2b2b`, `#38b2ac`, `#4b5563`, and semi-transparent blacks.
-- **Playfulness**: Preserved drones, cursor trail, Instagram sparkle, and added drone resize handling for robustness.
-- **Clarity**: Improved CV links and caption consistency.
-- **Mobile**: If navigation wraps tightly on small screens, consider adding a hamburger menu (let me know if needed).
-- **Further Issues**: If another `SyntaxError` appears, please share the full console message (including line number) for precise debugging.
-- **Testing**: Confirm if testing locally or live (provide domain if live).
-
-Please test the updated `index.html` and let me know if the lightbox works and if any other issues arise!
