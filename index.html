@@ -71,10 +71,27 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
+    .nav-container {
+      display: flex;
+      align-items: center;
+      padding: 1rem 0;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .nav-name {
+      font-size: 1rem;
+      color: #2b2b2b;
+      padding: 15px 20px;
+      text-transform: none;
+      font-weight: 600;
+    }
+
     nav ul {
       display: flex;
-      justify-content: center;
-      padding: 1rem 0;
+      flex-grow: 1;
+      justify-content: flex-end;
+      align-items: center;
     }
 
     nav a {
@@ -97,12 +114,15 @@
       width: 100%;
       margin-top: 60px;
       overflow: hidden;
+      padding: 20px 0;
     }
 
     .hero img {
-      width: 100%;
+      width: 66.67%;
       height: auto;
       object-fit: contain;
+      margin: 0 auto;
+      display: block;
     }
 
     .hero-caption {
@@ -187,7 +207,7 @@
     .gallery-overlay i {
       color: white;
       font-size: 1.5rem;
-      animation: pulse 1.5s infinite;
+      animation: pulse 1.5s;
     }
 
     @keyframes pulse {
@@ -314,9 +334,19 @@
         max-width: 80%;
       }
 
+      .nav-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-name {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+
       nav ul {
-        flex-wrap: wrap;
         justify-content: center;
+        flex-wrap: wrap;
       }
 
       nav a {
@@ -324,13 +354,14 @@
         font-size: 0.9rem;
       }
 
+      .hero img {
+        max-width: 80%;
+        max-height: 50vh;
+      }
+
       .hero-caption {
         font-size: 0.9rem;
         padding: 8px 15px;
-      }
-
-      .hero img {
-        max-height: 60vh;
       }
     }
 
@@ -422,13 +453,16 @@
 
   <!-- Navigation -->
   <nav>
-    <ul>
-      <li><a href="#works" aria-label="Jump to Works section">Works</a></li>
-      <li><a href="#about" aria-label="Jump to About section">About</a></li>
-      <li><a href="#videos" aria-label="Jump to Videos section">Videos</a></li>
-      <li><a href="#contact" aria-label="Jump to Contact section">Contact</a></li>
-      <li><a href="#cv" aria-label="Jump to CV section">CV</a></li>
-    </ul>
+    <div class="nav-container">
+      <span class="nav-name">Soya Arakawa</span>
+      <ul>
+        <li><a href="#works" aria-label="Jump to Works section">Works</a></li>
+        <li><a href="#about" aria-label="Jump to About section">About</a></li>
+        <li><a href="#videos" aria-label="Jump to Videos section">Videos</a></li>
+        <li><a href="#contact" aria-label="Jump to Contact section">Contact</a></li>
+        <li><a href="#cv" aria-label="Jump to CV section">CV</a></li>
+      </ul>
+    </div>
   </nav>
 
   <!-- Hero Image -->
@@ -841,7 +875,7 @@
           <li>2023: <em>Langer Salon</em>, Produktive Räume. Kunst und Design aus Krefeld, Haus Lange Esters, Krefeld, Germany</li>
           <li>2023: <em>鏡板 / Kagami-Ita</em>, triple is funny, but double makes the money, Kunsthalle Münster, Germany</li>
           <li>2022: <em>Bonded</em>, Bloom, Düsseldorf</li>
-          <li>2022: <em>Effi & Pym</em>, Muzeul Național al Hărților și Cărții Vechi, Bucharest, Romania</li>
+          <li>2022: <em>Effi & Pym</em>, Muzeul Național al Hărților și Cărții Vechi, Bucharest</li>
           <li>2022: <em>Beatrice von Babel</em>, Under the boat, Fondazione Bevilacqua La Masa, Sala del Camino, Complesso SS. Cosma e Damiano, Venezia, Italy</li>
           <li>2022: <em>Messengers: TAV & TOKAS 15th Anniversary Commemorative Exhibition</em>, Taipei Artist Village, Taipei, Taiwan</li>
           <li>2021: <em>友達と – „tomodachito“. Mit Freund*innen</em>, Kunsthalle Düsseldorf, Düsseldorf</li>
@@ -851,11 +885,11 @@
           <li>2015: <em>Hochdruck</em>, Galerie Spletstößer, Kaarst, Germany</li>
           <li>2015: <em>5 x 3</em>, Kunstraum Düsseldorf, Düsseldorf, Germany</li>
           <li>2015: <em>69. Internationale Kunstausstellung</em>, Kunstmuseum Solingen, Solingen, Germany</li>
-          <li>2015: <em>The integrated short</em>, Kunstakademie Düsseldorf, Germany</li>
+          <li>2015: <em>The integrated short-short</em>, Kunstakademie Düsseldorf, Germany</li>
           <li>2015: <em>Believing History, River runs through it</em>, Kloster Lorsch, Lorsch, Germany</li>
           <li>2015: <em>General Exposure</em>, Kunstpalast, Düsseldorf</li>
           <li>2015: <em>Spring garden in a certain place</em>, Kunstakademie Düsseldorf</li>
-          <li>2015: <em>Object Manipulating Economy / Economy Manipulating Object</em> (Installation: Ten thousand leaves and a big fish at the former laundry shop August Fröhls, Mönchengladbach, Germany</li>
+          <li>2015: <em>Object Manipulating Economy / Economy Manipulating Object</em> (Installation: Ten thousand leaves and a big fish at the former laundry shop August Fröhls), Mönchengladbach, Germany</li>
           <li>2014: <em>Erkenntnis</em>, Galerie M29, Köln</li>
           <li>2013: <em>VARIANTE FANTASTICO_endloser Heimweg, Nashinamure</em>, Herz Jesu Kirche, Wuppertal, Germany</li>
           <li>2013: <em>Sportsgeist</em>, Malkasten, Düsseldorf, Germany</li>
@@ -866,18 +900,18 @@
           <li>2011: <em>Kunstpunkte Düsseldorf</em>, Kunst im Hafen e.v., Düsseldorf, Germany</li>
           <li>2011: <em>MAULWURFTREMOR</em>, Villa Karl Marx, Viersen, Germany</li>
           <li>2011: <em>Tops</em>, Sammlung Philara, Düsseldorf</li>
-          </li>2011: <em>Legend of the Artist</em>, contribution to class exhibition, Kunstakademie Düsseldorf, Germany</li>
-          <li>2010: </em>I will be a big star!</em>, contribution to group exhibition at Kunstakademie Düsseldorf, Germany</li>
-          <li>2009: </em>I wanna be a big star!</em>, contribution to group exhibition at Tokyo Wonder Site Hongo, Tokyo, Japan</li>
+          <li>2011: <em>Legend of the Artist</em>, contribution to class exhibition, Kunstakademie Düsseldorf, Germany</li>
+          <li>2010: <em>I will be a big star!</em>, contribution to group exhibition at Kunstakademie Düsseldorf, Germany</li>
+          <li>2009: <em>I wanna be a big star!</em>, contribution to group exhibition at Tokyo Wonder Site Hongo, Tokyo, Japan</li>
         </ul>
-    </details>
+      </details>
 
-      <p class="text-sm text-center text-gray-500 mt-8">© Soya Arakawa 2025</p>
+      <p class="text-sm text-gray-500 text-center mt-8">© Soya Arakawa 2025</p>
     </section>
   </div>
 
   <script>
-    // Smooth scrolling for navigation links
+    // Smooth scrolling for jump links
     document.querySelectorAll('nav a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -886,7 +920,7 @@
       });
     });
 
-    // Highlight active navigation link
+    // Highlight active nav link
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav a');
     window.addEventListener('scroll', () => {
@@ -907,8 +941,8 @@
 
     // Floating drones animation
     const drones = [
-      { element: document.getElementById('drone1'), x: 100, y: 0, vx: 1, vy: 1 },
-      { element: document.getElementById('drone2'), x: window.innerWidth - 200, y: window.innerHeight / 2, vx: -0.6, vy: 1 }
+      { element: document.getElementById('drone1'), x: 100, y: 100, vx: 1, vy: 1 },
+      { element: document.getElementById('drone2'), x: window.innerWidth - 200, y: window.innerHeight / 2, vx: -1, vy: 1 }
     ];
 
     let contentWidth = 1280;
@@ -1040,7 +1074,7 @@
         }
       });
 
-      // Close lightbox on escape key
+      // Close lightbox on escape
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && lightboxOverlay.classList.contains('active')) {
           closeLightbox();
