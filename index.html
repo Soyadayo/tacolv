@@ -63,14 +63,14 @@
     .nav-container {
       display: flex;
       align-items: center;
-      padding: 0.4rem 0; /* Reduced from 0.67rem */
+      padding: 0.4rem 0;
       max-width: 1400px;
       margin: 0 auto;
     }
     .nav-name {
-      font-size: 0.95rem; /* Reduced from 1rem */
+      font-size: 0.95rem;
       color: #2b2b2b;
-      padding: 8px 15px; /* Reduced from 10px 15px */
+      padding: 8px 15px;
       text-transform: none;
       font-weight: 600;
     }
@@ -82,7 +82,7 @@
     }
     nav a {
       color: #2b2b2b;
-      padding: 8px 20px; /* Reduced from 10px 20px */
+      padding: 8px 20px;
       font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -93,7 +93,7 @@
       text-decoration: underline;
     }
     nav a.instagram-link {
-      padding: 8px 10px; /* Smaller padding for icon */
+      padding: 8px 10px;
     }
     nav a.instagram-link i {
       font-size: 1rem;
@@ -101,7 +101,7 @@
     .hero {
       position: relative;
       width: 100%;
-      margin-top: 30px; /* Adjusted for narrower nav */
+      margin-top: 30px;
       overflow: hidden;
       padding: 20px 0;
     }
@@ -204,14 +204,19 @@
       width: 96px;
       height: auto;
       opacity: 0.6;
-      z-index: 100; /* Increased for drone3 to overlap content */
+      z-index: 100;
       pointer-events: auto;
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      transition: transform 0.3s ease, opacity 0.3s ease; /* Updated for flip */
       will-change: transform;
     }
     .floating-object:hover {
-      transform: scale(1.2);
-      opacity: 0.8;
+      transform: scale(1.2); /* Base hover scale */
+    }
+    .floating-object#drone3.flipped {
+      transform: scaleX(-1); /* Flip horizontally for right movement */
+    }
+    .floating-object#drone3.flipped:hover {
+      transform: scaleX(-1) scale(1.2); /* Flip + hover scale */
     }
     .insta-link {
       position: relative;
@@ -300,7 +305,7 @@
       nav a.instagram-link i { font-size: 0.9rem; }
       .hero img { max-width: 80%; max-height: 50vh; }
       .hero-caption { font-size: 0.9rem; padding: 8px 15px; }
-      .hero { margin-top: 60px; } /* Adjusted for mobile nav height */
+      .hero { margin-top: 60px; }
     }
     .fade-in {
       opacity: 0;
@@ -884,6 +889,15 @@
           drone.vy += (Math.random() - 0.5) * 0.2;
           drone.vx = Math.max(-2, Math.min(2, drone.vx));
           drone.vy = Math.max(-2, Math.min(2, drone.vy));
+
+          // Flip drone3 based on direction
+          if (drone.element.id === 'drone3') {
+            if (drone.vx > 0) {
+              drone.element.classList.add('flipped');
+            } else {
+              drone.element.classList.remove('flipped');
+            }
+          }
 
           drone.element.style.transform = `translate(${drone.x}px, ${drone.y}px)`;
         });
