@@ -41,8 +41,8 @@
       max-width: 1400px;
       margin: 0 auto;
     }
-    .nav-logo img {
-      height: 40px; /* Logo size */
+    .nav-logo-img {
+      height: 50px; /* Logo size increased */
     }
     nav ul {
       display: flex;
@@ -146,17 +146,6 @@
     @keyframes fadeIn {
       to { opacity: 1; transform: translateY(0); }
     }
-    .lang-toggle {
-        font-size: 0.9rem;
-        cursor: pointer;
-        margin-right: 1rem;
-        padding: 0.25rem 0.5rem;
-        border: 1px solid transparent;
-    }
-    .lang-toggle.active {
-        border-bottom: 2px solid #D2691E;
-        font-weight: 600;
-    }
 
     /* Lightbox Styles */
     .lightbox-overlay {
@@ -203,7 +192,7 @@
       .nav-container { flex-direction: column; align-items: center; padding: 0.5rem 0; }
       nav ul { margin-top: 0.5rem; }
       nav a { padding: 6px 10px; font-size: 0.8rem; }
-      .hero { height: 40vh; margin-top: 80px; }
+      .hero { height: 40vh; margin-top: 90px; }
       .content-section { padding: 1.5rem; }
     }
   </style>
@@ -212,10 +201,13 @@
 
   <nav>
     <div class="nav-container">
-      <a href="#" class="nav-logo"><img src="cookmallogo.jpg" alt="cook mal Logo"></a>
+      <a href="#" class="flex items-center space-x-3">
+        <img src="cookmallogo.jpg" alt="cook mal Logo" class="nav-logo-img">
+        <span class="text-xl font-semibold" style="font-family: 'Noto Serif JP', serif;">cook mal</span>
+      </a>
       <ul>
-        <li><a href="#about" aria-label="Jump to About section">About</a></li>
         <li><a href="#gallery" aria-label="Jump to Gallery section">Gallery</a></li>
+        <li><a href="#about" aria-label="Jump to About section">About</a></li>
         <li><a href="#contact" aria-label="Jump to Contact section">Contact</a></li>
       </ul>
     </div>
@@ -228,36 +220,29 @@
 
   <main class="max-w-5xl mx-auto px-4 py-8">
   
-    <section id="about" class="fade-in content-section mb-12">
-      <div class="mb-8 md:flex md:space-x-8 items-center">
-        <div class="md:w-2/3">
-          <h1 class="text-4xl md:text-5xl font-semibold mb-6">About cook mal</h1>
-           <div class="flex space-x-4 mb-4 border-b">
-             <button class="lang-toggle" onclick="changeLang('jp')">日本語</button>
-             <button class="lang-toggle active" onclick="changeLang('en')">English</button>
-             <button class="lang-toggle" onclick="changeLang('de')">Deutsch</button>
-           </div>
-          <div class="text-gray-700 leading-relaxed space-y-4">
-              <p lang="jp" style="display:none;">「cook mal」は小越麻利江&荒川創也によるデュッセルドルフに拠点を置くアーティストクッキングコレクティブです。今まで展覧会や劇場でのイベントでの食事をそのイベントに合わせて作るという活動をしてきました。FFTで行われたニッポンパフォーマンスナイトでは、それに付随して、劇場作品に合わせた焼き物の器もつくり、それで食事を提供するということもしてきました。</p>
-              <p lang="en">"Cook mal" is an artist cooking collective based in Düsseldorf, led by Marie Ogoshi and Soya Arakawa. So far, they have created meals tailored to specific events, such as exhibitions and theater performances. At the Nippon Performance Night held at FFT, they also crafted ceramic tableware to complement the theater production and served meals using these pieces.</p>
-              <p lang="de" style="display:none;">„Cook mal“ ist ein in Düsseldorf ansässiges Künstler-Kochkollektiv, geleitet von Marie Ogoshi und Soya Arakawa. Bisher haben sie Mahlzeiten kreiert, die speziell auf Veranstaltungen wie Ausstellungen und Theateraufführungen abgestimmt waren. Bei der Nippon Performance Night im FFT haben sie zudem Keramikgeschirr hergestellt, das auf die Theaterproduktion abgestimmt war, und damit die Mahlzeiten serviert.</p>
-          </div>
-        </div>
-        <div class="md:w-1/3 mt-6 md:mt-0">
-          <figure>
-            <img src="cookmalportrait.jpg" alt="Portrait of Marie Ogoshi and Soya Arakawa" class="portrait">
-            <figcaption>Marie Ogoshi & Soya Arakawa</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
     <section id="gallery" class="fade-in content-section mb-12">
       <h2 class="text-3xl font-semibold mb-2">Gallery</h2>
       <p class="text-sm italic text-gray-600 mb-6">Click images to view larger</p>
+      
+      <h3 class="text-2xl font-semibold mt-8 mb-4">Event Views</h3>
+      <div class="gallery grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat1.jpg" data-caption="Event View 1"><img src="foodat1.jpg" alt="Holistic food view 1" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat2.jpg" data-caption="Event View 2"><img src="foodat2.jpg" alt="Holistic food view 2" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat3.jpg" data-caption="Event View 3"><img src="foodat3.jpg" alt="Holistic food view 3" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat4.jpg" data-caption="Event View 4"><img src="foodat4.jpg" alt="Holistic food view 4" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+      </div>
+
+      <h3 class="text-2xl font-semibold mt-8 mb-4">Individual Dishes</h3>
+      <div class="gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+        <figure><a href="#" class="js-lightbox-trigger" data-src="food1.jpg" data-caption="Dish 1"><img src="food1.jpg" alt="Individual food dish 1" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+        <figure><a href="#" class="js-lightbox-trigger" data-src="food2.jpg" data-caption="Dish 2"><img src="food2.jpg" alt="Individual food dish 2" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+        <figure><a href="#" class="js-lightbox-trigger" data-src="food3.jpg" data-caption="Dish 3"><img src="food3.jpg" alt="Individual food dish 3" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+        <figure><a href="#" class="js-lightbox-trigger" data-src="food4.jpg" data-caption="Dish 4"><img src="food4.jpg" alt="Individual food dish 4" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+        <figure><a href="#" class="js-lightbox-trigger" data-src="food5.jpg" data-caption="Dish 5"><img src="food5.jpg" alt="Individual food dish 5" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+      </div>
 
       <h3 class="text-2xl font-semibold mt-8 mb-4">Menu Samples</h3>
-      <div class="gallery grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div class="gallery grid grid-cols-1 md:grid-cols-3 gap-4">
         <figure>
           <a href="#" class="js-lightbox-trigger" data-src="menu1.jpg" data-caption="Menu Sample 1">
             <img src="menu1.jpg" alt="Menu Sample 1" loading="lazy">
@@ -277,22 +262,33 @@
           </a>
         </figure>
       </div>
+    </section>
 
-      <h3 class="text-2xl font-semibold mt-8 mb-4">Individual Dishes</h3>
-      <div class="gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
-        <figure><a href="#" class="js-lightbox-trigger" data-src="food1.jpg" data-caption="Dish 1"><img src="food1.jpg" alt="Individual food dish 1" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
-        <figure><a href="#" class="js-lightbox-trigger" data-src="food2.jpg" data-caption="Dish 2"><img src="food2.jpg" alt="Individual food dish 2" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
-        <figure><a href="#" class="js-lightbox-trigger" data-src="food3.jpg" data-caption="Dish 3"><img src="food3.jpg" alt="Individual food dish 3" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
-        <figure><a href="#" class="js-lightbox-trigger" data-src="food4.jpg" data-caption="Dish 4"><img src="food4.jpg" alt="Individual food dish 4" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
-        <figure><a href="#" class="js-lightbox-trigger" data-src="food5.jpg" data-caption="Dish 5"><img src="food5.jpg" alt="Individual food dish 5" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
-      </div>
-
-      <h3 class="text-2xl font-semibold mt-8 mb-4">Event Views</h3>
-      <div class="gallery grid grid-cols-2 md:grid-cols-4 gap-4">
-        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat1.jpg" data-caption="Event View 1"><img src="foodat1.jpg" alt="Holistic food view 1" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
-        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat2.jpg" data-caption="Event View 2"><img src="foodat2.jpg" alt="Holistic food view 2" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
-        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat3.jpg" data-caption="Event View 3"><img src="foodat3.jpg" alt="Holistic food view 3" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
-        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat4.jpg" data-caption="Event View 4"><img src="foodat4.jpg" alt="Holistic food view 4" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+    <section id="about" class="fade-in content-section mb-12">
+      <div class="mb-8 md:flex md:space-x-8 items-center">
+        <div class="md:w-3/4">
+          <h1 class="text-4xl md:text-5xl font-semibold mb-6">About cook mal</h1>
+          <div class="text-gray-700 leading-relaxed space-y-8">
+              <div>
+                  <h4 class="font-semibold text-lg mb-2 text-gray-800 border-b pb-1">English</h4>
+                  <p class="mt-2">"Cook mal" is an artist cooking collective based in Düsseldorf, led by Marie Ogoshi and Soya Arakawa. So far, they have created meals tailored to specific events, such as exhibitions and theater performances. At the Nippon Performance Night held at FFT, they also crafted ceramic tableware to complement the theater production and served meals using these pieces.</p>
+              </div>
+              <div>
+                  <h4 class="font-semibold text-lg mb-2 text-gray-800 border-b pb-1">日本語</h4>
+                  <p class="mt-2">「cook mal」は小越麻利江&荒川創也によるデュッセルドルフに拠点を置くアーティストクッキングコレクティブです。今まで展覧会や劇場でのイベントでの食事をそのイベントに合わせて作るという活動をしてきました。FFTで行われたニッポンパフォーマンスナイトでは、それに付随して、劇場作品に合わせた焼き物の器もつくり、それで食事を提供するということもしてきました。</p>
+              </div>
+              <div>
+                  <h4 class="font-semibold text-lg mb-2 text-gray-800 border-b pb-1">Deutsch</h4>
+                  <p class="mt-2">„Cook mal“ ist ein in Düsseldorf ansässiges Künstler-Koch-Kollektiv, geleitet von Marie Ogoshi und Soya Arakawa. Bisher haben sie Mahlzeiten kreiert, die speziell auf Veranstaltungen wie Ausstellungen und Theateraufführungen abgestimmt waren. Bei der Nippon Performance Night im FFT haben sie zudem Keramikgeschirr hergestellt, das auf die Theaterproduktion abgestimmt war, und damit die Mahlzeiten serviert.</p>
+              </div>
+          </div>
+        </div>
+        <div class="md:w-1/4 mt-8 md:mt-0">
+          <figure>
+            <img src="cookmalportrait.jpg" alt="Portrait of Marie Ogoshi and Soya Arakawa" class="portrait">
+            <figcaption>Marie Ogoshi & Soya Arakawa</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -339,14 +335,6 @@
         }
       });
     });
-
-    // Language switcher
-    function changeLang(lang) {
-        document.querySelectorAll('[lang]').forEach(el => el.style.display = 'none');
-        document.querySelectorAll(`[lang="${lang}"]`).forEach(el => el.style.display = 'block');
-        document.querySelectorAll('.lang-toggle').forEach(btn => btn.classList.remove('active'));
-        document.querySelector(`.lang-toggle[onclick="changeLang('${lang}')"]`).classList.add('active');
-    }
 
     // Lightbox functionality
     document.addEventListener('DOMContentLoaded', () => {
@@ -399,3 +387,4 @@
   </script>
 </body>
 </html>
+
