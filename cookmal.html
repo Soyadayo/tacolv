@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>cook mal – Artist Cooking Collective</title>
+  <meta name="description" content="Cook mal is an artist cooking collective based in Düsseldorf, led by Marie Ogoshi and Soya Arakawa.">
+  <meta name="keywords" content="cook mal, Marie Ogoshi, Soya Arakawa, artist cooking collective, Düsseldorf, food, art, performance">
+  <meta name="author" content="Marie Ogoshi, Soya Arakawa">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- External Libraries & Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <style>
+    /* Base styles inspired by the reference website */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fdfdfd;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Noto Serif JP', serif;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .nav-logo img {
+      height: 40px; /* Logo size */
+    }
+    nav ul {
+      display: flex;
+      align-items: center;
+    }
+    nav a {
+      color: #333;
+      padding: 8px 20px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+    }
+    nav a:hover, nav a.active {
+      color: #D2691E; /* A warm, food-related color */
+    }
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      margin-top: 60px; /* Adjust for nav height */
+      overflow: hidden;
+    }
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 10px 20px;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.2rem;
+    }
+    .content-section {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-top: -50px;
+      position: relative;
+      z-index: 10;
+    }
+    .portrait {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .gallery figure {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .gallery img {
+      transition: transform 0.3s ease;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 8px;
+    }
+    .gallery figure:hover .gallery-overlay {
+      opacity: 1;
+    }
+    .gallery-overlay i {
+      color: white;
+      font-size: 1.5rem;
+    }
+    figcaption {
+      font-size: 0.875rem;
+      font-style: italic;
+      color: #555;
+      text-align: center;
+      margin-top: 0.75rem;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .lang-toggle {
+        font-size: 0.9rem;
+        cursor: pointer;
+        margin-right: 1rem;
+        padding: 0.25rem 0.5rem;
+        border: 1px solid transparent;
+    }
+    .lang-toggle.active {
+        border-bottom: 2px solid #D2691E;
+        font-weight: 600;
+    }
+
+    /* Lightbox Styles */
+    .lightbox-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .lightbox-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -10px;
+      right: 0px;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+      z-index: 2001;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-container { flex-direction: column; align-items: center; padding: 0.5rem 0; }
+      nav ul { margin-top: 0.5rem; }
+      nav a { padding: 6px 10px; font-size: 0.8rem; }
+      .hero { height: 40vh; margin-top: 80px; }
+      .content-section { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="nav-logo"><img src="cookmallogo.jpg" alt="cook mal Logo"></a>
+      <ul>
+        <li><a href="#about" aria-label="Jump to About section">About</a></li>
+        <li><a href="#gallery" aria-label="Jump to Gallery section">Gallery</a></li>
+        <li><a href="#contact" aria-label="Jump to Contact section">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <img src="foodat1.jpg" alt="Holistic view of a meal by cook mal" loading="lazy">
+    <div class="hero-caption">cook mal</div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-8">
+  
+    <section id="about" class="fade-in content-section mb-12">
+      <div class="mb-8 md:flex md:space-x-8 items-center">
+        <div class="md:w-2/3">
+          <h1 class="text-4xl md:text-5xl font-semibold mb-6">About cook mal</h1>
+           <div class="flex space-x-4 mb-4 border-b">
+             <button class="lang-toggle" onclick="changeLang('jp')">日本語</button>
+             <button class="lang-toggle active" onclick="changeLang('en')">English</button>
+             <button class="lang-toggle" onclick="changeLang('de')">Deutsch</button>
+           </div>
+          <div class="text-gray-700 leading-relaxed space-y-4">
+              <p lang="jp" style="display:none;">「cook mal」は小越麻利江&荒川創也によるデュッセルドルフに拠点を置くアーティストクッキングコレクティブです。今まで展覧会や劇場でのイベントでの食事をそのイベントに合わせて作るという活動をしてきました。FFTで行われたニッポンパフォーマンスナイトでは、それに付随して、劇場作品に合わせた焼き物の器もつくり、それで食事を提供するということもしてきました。</p>
+              <p lang="en">"Cook mal" is an artist cooking collective based in Düsseldorf, led by Marie Ogoshi and Soya Arakawa. So far, they have created meals tailored to specific events, such as exhibitions and theater performances. At the Nippon Performance Night held at FFT, they also crafted ceramic tableware to complement the theater production and served meals using these pieces.</p>
+              <p lang="de" style="display:none;">„Cook mal“ ist ein in Düsseldorf ansässiges Künstler-Kochkollektiv, geleitet von Marie Ogoshi und Soya Arakawa. Bisher haben sie Mahlzeiten kreiert, die speziell auf Veranstaltungen wie Ausstellungen und Theateraufführungen abgestimmt waren. Bei der Nippon Performance Night im FFT haben sie zudem Keramikgeschirr hergestellt, das auf die Theaterproduktion abgestimmt war, und damit die Mahlzeiten serviert.</p>
+          </div>
+        </div>
+        <div class="md:w-1/3 mt-6 md:mt-0">
+          <figure>
+            <img src="cookmalportrait.jpg" alt="Portrait of Marie Ogoshi and Soya Arakawa" class="portrait">
+            <figcaption>Marie Ogoshi & Soya Arakawa</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="fade-in content-section mb-12">
+      <h2 class="text-3xl font-semibold mb-2">Gallery</h2>
+      <p class="text-sm italic text-gray-600 mb-6">Click images to view larger</p>
+
+      <h3 class="text-2xl font-semibold mt-8 mb-4">Menu Samples</h3>
+      <div class="gallery grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <figure>
+          <a href="#" class="js-lightbox-trigger" data-src="menu1.jpg" data-caption="Menu Sample 1">
+            <img src="menu1.jpg" alt="Menu Sample 1" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </a>
+        </figure>
+        <figure>
+          <a href="#" class="js-lightbox-trigger" data-src="menu2.jpg" data-caption="Menu Sample 2">
+            <img src="menu2.jpg" alt="Menu Sample 2" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </a>
+        </figure>
+        <figure>
+          <a href="#" class="js-lightbox-trigger" data-src="menu3.jpg" data-caption="Menu Sample 3">
+            <img src="menu3.jpg" alt="Menu Sample 3" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </a>
+        </figure>
+      </div>
+
+      <h3 class="text-2xl font-semibold mt-8 mb-4">Individual Dishes</h3>
+      <div class="gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+        <figure><a href="#" class="js-lightbox-trigger" data-src="food1.jpg" data-caption="Dish 1"><img src="food1.jpg" alt="Individual food dish 1" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+        <figure><a href="#" class="js-lightbox-trigger" data-src="food2.jpg" data-caption="Dish 2"><img src="food2.jpg" alt="Individual food dish 2" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+        <figure><a href="#" class="js-lightbox-trigger" data-src="food3.jpg" data-caption="Dish 3"><img src="food3.jpg" alt="Individual food dish 3" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+        <figure><a href="#" class="js-lightbox-trigger" data-src="food4.jpg" data-caption="Dish 4"><img src="food4.jpg" alt="Individual food dish 4" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+        <figure><a href="#" class="js-lightbox-trigger" data-src="food5.jpg" data-caption="Dish 5"><img src="food5.jpg" alt="Individual food dish 5" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+      </div>
+
+      <h3 class="text-2xl font-semibold mt-8 mb-4">Event Views</h3>
+      <div class="gallery grid grid-cols-2 md:grid-cols-4 gap-4">
+        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat1.jpg" data-caption="Event View 1"><img src="foodat1.jpg" alt="Holistic food view 1" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat2.jpg" data-caption="Event View 2"><img src="foodat2.jpg" alt="Holistic food view 2" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat3.jpg" data-caption="Event View 3"><img src="foodat3.jpg" alt="Holistic food view 3" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat4.jpg" data-caption="Event View 4"><img src="foodat4.jpg" alt="Holistic food view 4" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+      </div>
+    </section>
+
+    <section id="contact" class="fade-in content-section text-center">
+      <h2 class="text-3xl font-semibold mb-4">Contact</h2>
+      <p class="text-lg mb-2">For inquiries and collaborations, please contact Soya Arakawa.</p>
+      <p class="text-xl font-mono">
+        <a href="mailto:soya@tacolv.org" class="text-gray-700 hover:text-D2691E transition">
+            <i class="fas fa-envelope mr-2"></i>soya@tacolv.org
+        </a>
+      </p>
+    </section>
+
+  </main>
+  
+  <footer class="text-center py-6">
+      <p class="text-sm text-gray-500">&copy; 2025 cook mal (Marie Ogoshi & Soya Arakawa)</p>
+  </footer>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Highlight active nav link on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Language switcher
+    function changeLang(lang) {
+        document.querySelectorAll('[lang]').forEach(el => el.style.display = 'none');
+        document.querySelectorAll(`[lang="${lang}"]`).forEach(el => el.style.display = 'block');
+        document.querySelectorAll('.lang-toggle').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.lang-toggle[onclick="changeLang('${lang}')"]`).classList.add('active');
+    }
+
+    // Lightbox functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const lightboxTriggers = document.querySelectorAll('.js-lightbox-trigger');
+      if (lightboxTriggers.length === 0) return;
+
+      const lightboxOverlay = document.createElement('div');
+      lightboxOverlay.className = 'lightbox-overlay';
+      document.body.appendChild(lightboxOverlay);
+
+      const openLightbox = (imageUrl, imageCaption) => {
+        lightboxOverlay.innerHTML = `
+          <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img src="${imageUrl}" class="lightbox-image" alt="${imageCaption || 'Gallery Image'}">
+          </div>
+        `;
+        lightboxOverlay.classList.add('active');
+        lightboxOverlay.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+      };
+
+      const closeLightbox = () => {
+        lightboxOverlay.classList.remove('active');
+        setTimeout(() => { lightboxOverlay.innerHTML = ''; }, 300);
+      };
+
+      lightboxTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault();
+          const imageUrl = this.getAttribute('data-src');
+          const imageCaption = this.getAttribute('data-caption');
+          if (imageUrl) {
+            openLightbox(imageUrl, imageCaption);
+          }
+        });
+      });
+
+      lightboxOverlay.addEventListener('click', (e) => {
+        if (e.target === lightboxOverlay) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightboxOverlay.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
