@@ -235,6 +235,24 @@
             .header { flex-wrap: wrap; gap: 8px; padding: 10px 16px; }
             .header-controls { gap: 10px; width: 100%; justify-content: space-between; }
         }
+        .home-link {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.04em;
+            padding: 5px 12px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: #fff;
+            color: var(--text-muted);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .home-link:hover {
+            background: var(--text);
+            color: var(--bg);
+        }
     </style>
 </head>
 <body>
@@ -244,6 +262,7 @@
 <div class="header">
     <h1><em>Athens</em> Diary</h1>
     <div class="header-controls">
+        <a href="https://www.tacolv.org" class="home-link">← TOP</a>
         <div class="toggle-group" id="langToggle">
             <button class="toggle-btn active" data-lang="jp">JP</button>
             <button class="toggle-btn" data-lang="en">EN</button>
@@ -522,9 +541,13 @@ function render() {
             const marker = L.marker([place.lat, place.lng], { icon: makeIcon(place.id) })
                 .addTo(map).bindPopup(`<div class="popup-title">${place.title}</div><div class="popup-body">${place.visits.length} visits</div>`);
             
-            // ピンをクリックした際の動作 (場所モードではリストを強調)
+            // ピンをクリックした際の動作 (場所モードでは全visitのテキストを表示)
             marker.on('click', () => {
                 setActive(place.id);
+                const allBodies = place.visits.map(v => {
+                    return `── ${formatDate(v.date)} ──\n${v.body}`;
+                }).join('\n');
+                showDetail(place.title, place.visits.length + ' visits', allBodies);
             });
             
             markers[place.id] = marker;
@@ -540,6 +563,10 @@ function render() {
             el.onclick = () => {
                 map.flyTo([place.lat, place.lng], 15, { duration: 0.8 });
                 setActive(place.id);
+                const allBodies = place.visits.map(v => {
+                    return `── ${formatDate(v.date)} ──\n${v.body}`;
+                }).join('\n');
+                showDetail(place.title, place.visits.length + ' visits', allBodies);
             };
             entriesList.appendChild(el);
 
