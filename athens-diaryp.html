@@ -173,22 +173,33 @@
             position: absolute; inset: 0;
             background: var(--bg-panel);
             z-index: 10;
-            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
             transform: translateX(-100%);
             transition: transform 0.3s ease;
         }
         .detail-overlay.open { transform: translateX(0); }
         .detail-back {
             display: block;
+            flex-shrink: 0;
             padding: 14px 22px;
             font-family: 'DM Mono', monospace;
             font-size: 11px;
             color: var(--text-muted);
             cursor: pointer;
             border: none; background: none;
+            border-bottom: 1px solid var(--border);
         }
         .detail-back:hover { color: var(--text); }
-        .detail-content { padding: 0 22px 40px; }
+        .detail-content {
+            padding: 14px 22px 60px;
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .detail-content::-webkit-scrollbar { width: 4px; }
+        .detail-content::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
         .detail-date {
             font-family: 'DM Mono', monospace;
             font-size: 11px;
