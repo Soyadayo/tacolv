@@ -383,7 +383,6 @@
         <li><a href="https://www.tacolv.org/cookmal.html">cook mal</a></li>
         <li><a href="#contact" aria-label="Jump to Contact section">Contact</a></li>
         <li><a href="#cv" aria-label="Jump to CV section">CV</a></li>
-        <li><a href="https://www.tacolv.org/athens-diaryp.html">Athens diary</a></li>
         <li><a href="https://www.instagram.com/soya_ar.tacolv" target="_blank" class="instagram-link" aria-label="Visit Soya Arakawa's Instagram"><i class="fab fa-instagram"></i></a></li>
       </ul>
     </div>
@@ -632,7 +631,7 @@
         <ul>
           <li>Soya Arakawa / 荒川創也</li>
           <li>Lives and works in Krefeld, Germany</li>
-          <li>Email: <a href="/cdn-cgi/l/email-protection#4c3f23352d0c382d2f23203a62233e2b" class="text-gray-600 hover:text-teal-800"><span class="__cf_email__" data-cfemail="5a2935233b1a2e3b3935362c7435283d">[email&#160;protected]</span></a></li>
+          <li>Email: <a href="mailto:soya@tacolv.org" class="text-gray-600 hover:text-teal-800">soya@tacolv.org</a></li>
           <li>Tel: <a href="tel:+4917683382447" class="text-gray-600 hover:text-teal-800">+49 176 8338 2447</a></li>
           <li>Website: <a href="https://www.tacolv.org" target="_blank" class="text-gray-600 hover:text-teal-800">www.tacolv.org</a></li>
         </ul>
@@ -818,7 +817,7 @@
       </details>
       <p class="text-sm text-gray-500 text-center mt-6">© 2025 Soya Arakawa</p>
     </div>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
       // Smooth scrolling for navigation links
       document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -998,3 +997,15 @@
 
         document.addEventListener('keydown', function(e) {
           if (e.key === 'Escape' && lightboxOverlay.classList.contains('active')) {
+            closeLightbox();
+          }
+        });
+
+        function closeLightbox() {
+          lightboxOverlay.classList.remove('active');
+          lightboxOverlay.innerHTML = '';
+        }
+      });
+    </script>
+</body>
+</html>
