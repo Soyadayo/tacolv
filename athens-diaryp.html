@@ -8,7 +8,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap');
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#f5f0e8;--bg-panel:#faf7f2;--text:#2c2a26;--text-muted:#8a857a;--accent:#c45a3c;--border:#ddd6c9}
+:root{--bg:#f5f0e8;--bg-panel:#faf7f2;--text:#2c2a26;--text-muted:#8a857a;--accent:#c45a3c;--accent-blue:#3b7fc4;--border:#ddd6c9}
 body{font-family:'Noto Sans JP',sans-serif;font-weight:300;background:var(--bg);color:var(--text);height:100vh;overflow:hidden}
 #loading{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;justify-content:center;align-items:center;font-family:'DM Mono',monospace;font-size:12px;color:var(--accent);transition:opacity 0.5s}
 .header{display:flex;align-items:baseline;justify-content:space-between;padding:16px 28px 14px;border-bottom:1px solid var(--border);background:var(--bg-panel);z-index:100}
@@ -18,7 +18,6 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:300;background:var(--bg);
 .toggle-group{display:flex;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff}
 .toggle-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.04em;padding:5px 12px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.2s}
 .toggle-btn.active{background:var(--text);color:var(--bg)}
-.toggle-btn.source-btn{font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:400;letter-spacing:0}
 .main{display:flex;height:calc(100vh - 56px)}
 .sidebar{width:380px;min-width:380px;background:var(--bg-panel);border-right:1px solid var(--border);display:flex;flex-direction:column;position:relative;overflow:hidden}
 .sidebar-top{padding:14px 22px 10px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;justify-content:space-between}
@@ -51,6 +50,8 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:300;background:var(--bg);
 #map{height:100%;width:100%}
 .pin{width:13px;height:13px;background:var(--accent);border:2px solid #fff;border-radius:50%;box-shadow:0 2px 8px rgba(196,90,60,0.35);transition:transform 0.2s,box-shadow 0.2s;cursor:pointer}
 .pin.highlight{transform:scale(1.6);box-shadow:0 2px 14px rgba(196,90,60,0.55)}
+.pin.blue{background:var(--accent-blue);box-shadow:0 2px 8px rgba(59,127,196,0.35)}
+.pin.blue.highlight{transform:scale(1.6);box-shadow:0 2px 14px rgba(59,127,196,0.55)}
 .leaflet-popup-content-wrapper{border-radius:4px;box-shadow:0 4px 20px rgba(0,0,0,0.12)}
 .leaflet-popup-content{margin:14px 16px;font-size:13px;line-height:1.6}
 .popup-date{font-family:'DM Mono',monospace;font-size:10px;color:#8a857a;margin-bottom:3px}
@@ -74,8 +75,8 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:300;background:var(--bg);
 <div class="header-controls">
 <a href="https://www.tacolv.org" class="home-link">&#8592; TOP</a>
 <div class="toggle-group" id="sourceToggle">
-<button class="toggle-btn source-btn active" data-source="diary">アテネの記憶</button>
-<button class="toggle-btn source-btn" data-source="scenes">祭りの日</button>
+<button class="toggle-btn active" data-source="diary">MEMORY</button>
+<button class="toggle-btn" data-source="scenes">FESTIVAL</button>
 </div>
 <div class="toggle-group" id="langToggle">
 <button class="toggle-btn active" data-lang="jp">JP</button>
@@ -109,7 +110,10 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:300;background:var(--bg);
 var RAW="https://raw.githubusercontent.com/Soyadayo/tacolv/main/";
 var cLang="jp",cMode="date",cSrc="diary";
 var dEnt=[],pEnt=[],mrk={},aId=null;
-var SRC={diary:{fp:"athens_diary_",t:"<em>Athens</em> Diary"},scenes:{fp:"scenes_",t:"<em>祭りの日</em>"}};
+var SRC={
+diary:{fp:"athens_diary_",t:"<em>Athens</em> Diary",pinClass:""},
+scenes:{fp:"scenes_",t:"<em>\u796D\u308A\u306E\u65E5</em>",pinClass:"blue"}
+};
 var mp=L.map('map',{zoomControl:false}).setView([37.9720,23.7250],14);
 L.control.zoom({position:'topright'}).addTo(mp);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'&#169; OSM &#169; CARTO'}).addTo(mp);
@@ -120,7 +124,11 @@ var dC=document.getElementById('detailContent');
 var ld=document.getElementById('loading');
 var pT=document.getElementById('pageTitle');
 function fD(s){if(!s)return"";var d=new Date(s);var m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return d.getDate()+' '+m[d.getMonth()]+' '+d.getFullYear();}
-function mI(id){return L.divIcon({className:'',html:'<div class="pin" data-id="'+id+'"></div>',iconSize:[13,13],iconAnchor:[6,6]});}
+function mI(id){
+var extra=SRC[cSrc].pinClass;
+var cls="pin"+(extra?" "+extra:"");
+return L.divIcon({className:'',html:'<div class="'+cls+'" data-id="'+id+'"></div>',iconSize:[13,13],iconAnchor:[6,6]});
+}
 function cM(){Object.keys(mrk).forEach(function(k){mp.removeLayer(mrk[k]);});mrk={};}
 function pMD(text){
 var lines=text.split('\n'),entries=[],cDS="",cE=null;
