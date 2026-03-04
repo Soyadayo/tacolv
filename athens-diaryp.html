@@ -11,13 +11,26 @@
 :root{--bg:#f5f0e8;--bg-panel:#faf7f2;--text:#2c2a26;--text-muted:#8a857a;--accent:#c45a3c;--accent-blue:#3b7fc4;--border:#ddd6c9}
 body{font-family:'Noto Sans JP',sans-serif;font-weight:300;background:var(--bg);color:var(--text);height:100vh;overflow:hidden}
 #loading{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;justify-content:center;align-items:center;font-family:'DM Mono',monospace;font-size:12px;color:var(--accent);transition:opacity 0.5s}
-.header{display:flex;align-items:baseline;justify-content:space-between;padding:16px 28px 14px;border-bottom:1px solid var(--border);background:var(--bg-panel);z-index:100}
-.header h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:26px;letter-spacing:0.02em}
+
+/* ===== HEADER ===== */
+.header{display:flex;align-items:center;padding:12px 28px;border-bottom:1px solid var(--border);background:var(--bg-panel);z-index:100;gap:16px}
+.header h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:26px;letter-spacing:0.02em;white-space:nowrap}
 .header h1 em{font-style:italic;color:var(--accent)}
-.header-controls{display:flex;align-items:center;gap:20px}
+
+/* Source toggle (MEMORY/FESTIVAL) - centered in remaining space */
+.header-center{flex:1;display:flex;justify-content:center}
+#sourceToggle{display:flex;border:1px solid var(--accent);border-radius:20px;overflow:hidden;background:#fff}
+#sourceToggle .toggle-btn{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.06em;padding:7px 20px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.2s;font-weight:400}
+#sourceToggle .toggle-btn.active{background:var(--accent);color:#fff}
+
+.header-controls{display:flex;align-items:center;gap:12px}
 .toggle-group{display:flex;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff}
 .toggle-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.04em;padding:5px 12px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.2s}
 .toggle-btn.active{background:var(--text);color:var(--bg)}
+.home-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.04em;padding:5px 12px;border:1px solid var(--border);border-radius:16px;background:#fff;color:var(--text-muted);cursor:pointer;text-decoration:none;transition:all 0.2s;white-space:nowrap}
+.home-link:hover{background:var(--text);color:var(--bg)}
+
+/* ===== MAIN LAYOUT ===== */
 .main{display:flex;height:calc(100vh - 56px)}
 .sidebar{width:380px;min-width:380px;background:var(--bg-panel);border-right:1px solid var(--border);display:flex;flex-direction:column;position:relative;overflow:hidden}
 .sidebar-top{padding:14px 22px 10px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);display:flex;justify-content:space-between}
@@ -35,17 +48,21 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:300;background:var(--bg);
 .sub-entry:hover{background:rgba(196,90,60,0.03)}
 .sub-entry .sub-date{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);margin-bottom:3px}
 .sub-entry .sub-excerpt{font-size:12px;line-height:1.6;color:var(--text-muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.detail-overlay{position:absolute;inset:0;background:var(--bg-panel);z-index:10;display:flex;flex-direction:column;overflow:hidden;transform:translateX(-100%);transition:transform 0.3s ease}
+
+/* ===== DETAIL OVERLAY - FIXED FOR MOBILE ===== */
+.detail-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:var(--bg-panel);z-index:10;display:flex;flex-direction:column;transform:translateX(-100%);transition:transform 0.3s ease}
 .detail-overlay.open{transform:translateX(0)}
-.detail-back{display:block;flex-shrink:0;padding:14px 22px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);cursor:pointer;border:none;background:none;border-bottom:1px solid var(--border)}
+.detail-back{display:block;flex-shrink:0;padding:14px 22px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);cursor:pointer;border:none;background:none;border-bottom:1px solid var(--border);text-align:left}
 .detail-back:hover{color:var(--text)}
-.detail-content{padding:14px 22px 60px;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.detail-content{flex:1;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:14px 22px 120px}
 .detail-content::-webkit-scrollbar{width:4px}
 .detail-content::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 .detail-date{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);margin-bottom:8px}
 .detail-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;line-height:1.35;margin-bottom:18px}
 .detail-body{font-size:13.5px;line-height:2;color:#4a4740}
 .detail-body p{margin-bottom:0.8em}
+
+/* ===== MAP ===== */
 .map-wrap{flex:1;position:relative}
 #map{height:100%;width:100%}
 .pin{width:13px;height:13px;background:var(--accent);border:2px solid #fff;border-radius:50%;box-shadow:0 2px 8px rgba(196,90,60,0.35);transition:transform 0.2s,box-shadow 0.2s,opacity 0.2s;cursor:pointer}
@@ -60,27 +77,35 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:300;background:var(--bg);
 .popup-title{font-family:'Cormorant Garamond',serif;font-size:17px;margin-bottom:6px}
 .popup-body{color:#5a5750;font-weight:300;font-size:12.5px}
 .popup-src{font-family:'DM Mono',monospace;font-size:9px;color:#aaa;margin-top:4px}
+
+/* ===== MOBILE ===== */
 @media(max-width:800px){
+.header{flex-wrap:wrap;padding:10px 16px;gap:8px}
+.header h1{font-size:22px}
+.header-center{order:10;flex-basis:100%;justify-content:center;margin-top:2px}
+#sourceToggle .toggle-btn{font-size:13px;padding:8px 28px}
+.header-controls{gap:8px}
 .main{flex-direction:column-reverse}
 .sidebar{width:100%;min-width:unset;height:45vh;border-right:none;border-top:1px solid var(--border)}
 .map-wrap{height:55vh}
-.header{flex-wrap:wrap;gap:8px;padding:10px 16px}
-.header-controls{gap:10px;width:100%;justify-content:space-between}
+/* Mobile detail overlay uses fixed position to escape sidebar constraints */
+.detail-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;padding-top:0}
+.detail-content{padding:14px 22px 140px}
 }
-.home-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.04em;padding:5px 12px;border:1px solid var(--border);border-radius:16px;background:#fff;color:var(--text-muted);cursor:pointer;text-decoration:none;transition:all 0.2s;white-space:nowrap}
-.home-link:hover{background:var(--text);color:var(--bg)}
 </style>
 </head>
 <body>
 <div id="loading">FETCHING DATA...</div>
 <div class="header">
 <h1 id="pageTitle"><em>Athens</em> Diary</h1>
-<div class="header-controls">
-<a href="https://www.tacolv.org" class="home-link">&#8592; TOP</a>
+<div class="header-center">
 <div class="toggle-group" id="sourceToggle">
 <button class="toggle-btn active" data-source="diary">MEMORY</button>
 <button class="toggle-btn" data-source="scenes">FESTIVAL</button>
 </div>
+</div>
+<div class="header-controls">
+<a href="https://www.tacolv.org" class="home-link">&#8592; TOP</a>
 <div class="toggle-group" id="langToggle">
 <button class="toggle-btn active" data-lang="jp">JP</button>
 <button class="toggle-btn" data-lang="en">EN</button>
@@ -116,7 +141,7 @@ var allData={diary:{date:[],place:[]},scenes:{date:[],place:[]}};
 var mrk={},bgMrk={},aId=null;
 var SRC={
 diary:{fp:"athens_diary_",t:"<em>Athens</em> Diary",pin:"",label:"MEMORY"},
-scenes:{fp:"scenes_",t:"<em>\u796D\u308A\u306E\u65E5</em>",pin:"blue",label:"FESTIVAL"}
+scenes:{fp:"scenes_",t:"<em>Festival</em> Days",pin:"blue",label:"FESTIVAL"}
 };
 var otherSrc=function(s){return s==="diary"?"scenes":"diary";};
 var mp=L.map('map',{zoomControl:false}).setView([37.9720,23.7250],14);
