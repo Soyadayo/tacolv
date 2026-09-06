@@ -138,6 +138,31 @@
       text-align: center;
       margin-top: 0.75rem;
     }
+    .lang-tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 1px solid #e5e5e5;
+      margin-bottom: 1.5rem;
+    }
+    .lang-tab-btn {
+      padding: 8px 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #999;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      cursor: pointer;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+    .lang-tab-btn:hover {
+      color: #D2691E;
+    }
+    .lang-tab-btn.active {
+      color: #D2691E;
+      border-color: #D2691E;
+    }
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -206,61 +231,53 @@
         <span class="text-xl font-semibold" style="font-family: 'Noto Serif JP', serif;">cook mal</span>
       </a>
       <ul>
+        <li><a href="#news" aria-label="Jump to News section">News</a></li>
         <li><a href="#gallery" aria-label="Jump to Gallery section">Gallery</a></li>
         <li><a href="#about" aria-label="Jump to About section">About</a></li>
         <li><a href="#contact" aria-label="Jump to Contact section">Contact</a></li>
+        <li><a href="https://www.instagram.com/cookmal.mosa" target="_blank" rel="noopener" aria-label="Visit cook mal's Instagram"><i class="fab fa-instagram"></i></a></li>
       </ul>
     </div>
   </nav>
 
   <header class="hero">
-    <img src="foodat1.jpg" alt="Holistic view of a meal by cook mal" loading="lazy">
+    <img src="food-photos/events/foodat1.jpg" alt="Holistic view of a meal by cook mal" loading="lazy">
     <div class="hero-caption">cook mal</div>
   </header>
 
   <main class="max-w-5xl mx-auto px-4 py-8">
-  
+
+    <section id="news" class="fade-in content-section mb-12">
+      <h2 class="text-3xl font-semibold mb-4">News</h2>
+      <article class="border-l-4 pl-4" style="border-color: #D2691E;">
+        <h3 class="text-2xl font-semibold mb-1 text-gray-800">Asia Pop – NRW-Forum Düsseldorf</h3>
+        <p class="text-sm text-gray-500 mb-4">Eröffnung: 16. September 2026, ab 19 Uhr · Laufzeit: 6 Monate</p>
+        <p class="text-gray-700 leading-relaxed mb-4">Wir zeigen unsere Installation im Museum NRW-Forum in Düsseldorf. Die Ausstellung <em>Asia Pop</em> eröffnet am 16. September ab 19 Uhr und läuft anschließend über 6 Monate.</p>
+        <p class="text-gray-700 leading-relaxed mb-4">Mit dabei sind: Emil Adam, Chim↑Pom, Choy Ka Fai, <strong>cook mal (Soya Arakawa &amp; Marie Ogoshi)</strong>, Liza Dieckwisch &amp; Julia Gruner, FAMEME, Cao Fei, Corina Gertz, Akihiro Higuchi, Jae Ho Jung, Taka Kagitomi, Helena Parada Kim, Lisa Mayer, Miho Nozaki, Takumi Ogata, Bart Seng Wen Long, Oliver Sieber, Katja Stuke, Kayan Tam, Hiroki Tsukuda, Sin Wai Kin.</p>
+        <p class="space-x-4">
+          <a href="https://www.nrw-forum.de/ausstellungen/asia-pop" target="_blank" rel="noopener" class="text-gray-700 hover:text-D2691E transition"><i class="fas fa-arrow-up-right-from-square mr-1"></i>Ausstellungsseite</a>
+          <a href="https://maps.app.goo.gl/BhTL97q7kNccqF3L7" target="_blank" rel="noopener" class="text-gray-700 hover:text-D2691E transition"><i class="fas fa-map-marker-alt mr-1"></i>Anfahrt / Karte</a>
+        </p>
+      </article>
+    </section>
+
     <section id="gallery" class="fade-in content-section mb-12">
       <h2 class="text-3xl font-semibold mb-2">Gallery</h2>
       <p class="text-sm italic text-gray-600 mb-6">Click images to view larger</p>
-      
+
       <h3 class="text-2xl font-semibold mt-8 mb-4">Event Views</h3>
-      <div class="gallery grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat1.jpg" data-caption="Event View 1"><img src="foodat1.jpg" alt="Holistic food view 1" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
-        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat2.jpg" data-caption="Event View 2"><img src="foodat2.jpg" alt="Holistic food view 2" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
-        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat3.jpg" data-caption="Event View 3"><img src="foodat3.jpg" alt="Holistic food view 3" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
-        <figure><a href="#" class="js-lightbox-trigger" data-src="foodat4.jpg" data-caption="Event View 4"><img src="foodat4.jpg" alt="Holistic food view 4" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+      <div id="gallery-events" class="gallery grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <p class="text-sm text-gray-400 col-span-full">Loading photos…</p>
       </div>
 
       <h3 class="text-2xl font-semibold mt-8 mb-4">Individual Dishes</h3>
-      <div class="gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
-        <figure><a href="#" class="js-lightbox-trigger" data-src="food1.jpg" data-caption="Dish 1"><img src="food1.jpg" alt="Individual food dish 1" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
-        <figure><a href="#" class="js-lightbox-trigger" data-src="food2.jpg" data-caption="Dish 2"><img src="food2.jpg" alt="Individual food dish 2" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
-        <figure><a href="#" class="js-lightbox-trigger" data-src="food3.jpg" data-caption="Dish 3"><img src="food3.jpg" alt="Individual food dish 3" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
-        <figure><a href="#" class="js-lightbox-trigger" data-src="food4.jpg" data-caption="Dish 4"><img src="food4.jpg" alt="Individual food dish 4" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
-        <figure><a href="#" class="js-lightbox-trigger" data-src="food5.jpg" data-caption="Dish 5"><img src="food5.jpg" alt="Individual food dish 5" loading="lazy"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a></figure>
+      <div id="gallery-dishes" class="gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+        <p class="text-sm text-gray-400 col-span-full">Loading photos…</p>
       </div>
 
       <h3 class="text-2xl font-semibold mt-8 mb-4">Menu Samples</h3>
-      <div class="gallery grid grid-cols-1 md:grid-cols-3 gap-4">
-        <figure>
-          <a href="#" class="js-lightbox-trigger" data-src="menu1.jpg" data-caption="Menu Sample 1">
-            <img src="menu1.jpg" alt="Menu Sample 1" loading="lazy">
-            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-          </a>
-        </figure>
-        <figure>
-          <a href="#" class="js-lightbox-trigger" data-src="menu2.jpg" data-caption="Menu Sample 2">
-            <img src="menu2.jpg" alt="Menu Sample 2" loading="lazy">
-            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-          </a>
-        </figure>
-        <figure>
-          <a href="#" class="js-lightbox-trigger" data-src="menu3.jpg" data-caption="Menu Sample 3">
-            <img src="menu3.jpg" alt="Menu Sample 3" loading="lazy">
-            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-          </a>
-        </figure>
+      <div id="gallery-menu" class="gallery grid grid-cols-1 md:grid-cols-3 gap-4">
+        <p class="text-sm text-gray-400 col-span-full">Loading photos…</p>
       </div>
     </section>
 
@@ -268,18 +285,59 @@
       <div class="mb-8 md:flex md:space-x-8 items-center">
         <div class="md:w-3/4">
           <h1 class="text-4xl md:text-5xl font-semibold mb-6">About cook mal</h1>
-          <div class="text-gray-700 leading-relaxed space-y-8">
-              <div>
-                  <h4 class="font-semibold text-lg mb-2 text-gray-800 border-b pb-1">English</h4>
-                  <p class="mt-2">"cook mal" is an artist cooking collective based in Düsseldorf, led by Marie Ogoshi and Soya Arakawa. So far, they have created meals tailored to specific events, such as exhibitions and theater performances. At the Nippon Performance Nights held at FFT Düsseldorf, they also crafted ceramic tableware to complement the theater production and served meals using these pieces.</p>
+          <div class="text-gray-700 leading-relaxed">
+              <div class="lang-tabs" role="tablist">
+                  <button type="button" class="lang-tab-btn active" data-lang="en" role="tab" aria-selected="true">English</button>
+                  <button type="button" class="lang-tab-btn" data-lang="jp" role="tab" aria-selected="false">日本語</button>
+                  <button type="button" class="lang-tab-btn" data-lang="de" role="tab" aria-selected="false">Deutsch</button>
               </div>
-              <div>
-                  <h4 class="font-semibold text-lg mb-2 text-gray-800 border-b pb-1">日本語</h4>
-                  <p class="mt-2">「cook mal」は小越麻利江&荒川創也によるデュッセルドルフに拠点を置くアーティストクッキングコレクティブです。今まで展覧会や劇場でのイベントでの食事をそのイベントに合わせて作るという活動をしてきました。FFT Düsseldorfで行われたニッポンパフォーマンスナイツでは、それに付随して、劇場作品に合わせた焼き物の器もつくり、それで食事を提供するということもしてきました。</p>
+              <div class="lang-panel" data-lang-panel="en">
+                  <p>"cook mal" is an artist cooking collective based in Düsseldorf, led by Marie Ogoshi and Soya Arakawa. So far, they have created meals tailored to specific events, such as exhibitions and theater performances. At the Nippon Performance Nights held at FFT Düsseldorf, they also crafted ceramic tableware to complement the theater production and served meals using these pieces.</p>
+                  <div class="mt-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 border-b pb-2">Members</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <article>
+                        <h4 class="font-semibold text-lg mb-2 text-gray-800">Soya Arakawa</h4>
+                        <p class="mt-2">(*1984 in Hamamatsu, Japan) is an artist based in Krefeld. He studied sculpture at Kanazawa College of Art and at the Kunstakademie Düsseldorf under Rita McBride, graduating as a Meisterschüler (master student). His practice spans sculpture, drawing, painting, and performance, and includes collaborative works in which he takes part as a singer, dancer, and instrumentalist. In his works, choreographic processes unfold into spatial arrangements. He develops what he calls Performance Scores, which appear as objects or actions and function simultaneously as independent works and as the basis for performances. His works have been shown at, among others, the Kunsthalle Düsseldorf, the Kunsthalle Münster, Haus Esters, and Cabaret Voltaire. In 2024, he presented the solo exhibition <em>AKECHAN</em> at the Pulverhaus of Schlosstheater Moers.</p>
+                      </article>
+                      <article>
+                        <h4 class="font-semibold text-lg mb-2 text-gray-800">Marie Ogoshi</h4>
+                        <p class="mt-2">(*1984 in Kyoto, Japan) is an artist whose works are site-specific and shaped by a constructivist approach. Her pieces are typically closely tied to the site of exhibition. Her art opens up new perspectives that stand out clearly from everyday surroundings. She studied at the Kunstakademie Düsseldorf under Professor Didier Vermeulen. From 2018 to 2022, she served as a board member of the artists' association Markasten. Her works have been exhibited at various venues.</p>
+                      </article>
+                    </div>
+                  </div>
               </div>
-              <div>
-                  <h4 class="font-semibold text-lg mb-2 text-gray-800 border-b pb-1">Deutsch</h4>
-                  <p class="mt-2">„cook mal“ ist ein in Düsseldorf ansässiges Künstler-Koch-Kollektiv, geleitet von Marie Ogoshi und Soya Arakawa. Bisher haben sie Mahlzeiten kreiert, die speziell auf Veranstaltungen wie Ausstellungen und Theateraufführungen abgestimmt waren. Bei der Nippon Performance Nights im FFT Düsseldorf haben sie zudem Keramikgeschirr hergestellt, das auf die Theaterproduktion abgestimmt war, und damit die Mahlzeiten serviert.</p>
+              <div class="lang-panel hidden" data-lang-panel="jp">
+                  <p>「cook mal」は小越麻利江&荒川創也によるデュッセルドルフに拠点を置くアーティストクッキングコレクティブです。今まで展覧会や劇場でのイベントでの食事をそのイベントに合わせて作るという活動をしてきました。FFT Düsseldorfで行われたニッポンパフォーマンスナイツでは、それに付随して、劇場作品に合わせた焼き物の器もつくり、それで食事を提供するということもしてきました。</p>
+                  <div class="mt-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 border-b pb-2">メンバー</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <article>
+                        <h4 class="font-semibold text-lg mb-2 text-gray-800">荒川創也</h4>
+                        <p class="mt-2">1984年、静岡県浜松生まれ。ドイツのクレーフェルト市を拠点に活動するアーティスト。金沢美術工芸大学、およびデュッセルドルフ芸術アカデミーでリタ・マクブライドに師事し彫刻を学び、マイスターシューラーとして卒業。彫刻、ドローイング、絵画、パフォーマンスを横断する活動を行い、歌手、パフォーマー、演奏者として参加するコラボレーション作品も手がける。作品では振付的な手法を空間的インスタレーションへと展開していく。彼は「パフォーマンス・スコア」と呼ばれる、オブジェクトや平面などとして展示され、同時に、独立した作品でありパフォーマンスの基盤ともなるものを制作している。作品はクンストハレデュッセルドルフ、クンストハレミュンスター、ハウスランゲ・エスタース、カバレット・ヴォルテールなどで発表されてきた。2024年にはモース市の城内にある劇場に併設されたのプルヴァーハウスにて個展『AKECHAN』を開催した。</p>
+                      </article>
+                      <article>
+                        <h4 class="font-semibold text-lg mb-2 text-gray-800">小越麻利江</h4>
+                        <p class="mt-2">1984年、京都生まれ。サイトスペシフィックかつ構成主義的な特徴を持つ作品を制作するアーティスト。作品の多くは展示場所と密接に結びついており、日常の環境から明確に切り離された新たな視点を切り開く。デュッセルドルフ芸術アカデミーにてディーター・フェアマイレン教授に師事。2018年から2022年まで、アーティスト協会マルカステンの理事を務めた。作品はさまざまな場所で展示されている。</p>
+                      </article>
+                    </div>
+                  </div>
+              </div>
+              <div class="lang-panel hidden" data-lang-panel="de">
+                  <p>„cook mal“ ist ein in Düsseldorf ansässiges Künstler-Koch-Kollektiv, geleitet von Marie Ogoshi und Soya Arakawa. Bisher haben sie Mahlzeiten kreiert, die speziell auf Veranstaltungen wie Ausstellungen und Theateraufführungen abgestimmt waren. Bei der Nippon Performance Nights im FFT Düsseldorf haben sie zudem Keramikgeschirr hergestellt, das auf die Theaterproduktion abgestimmt war, und damit die Mahlzeiten serviert.</p>
+                  <div class="mt-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 border-b pb-2">Mitglieder</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <article>
+                        <h4 class="font-semibold text-lg mb-2 text-gray-800">Soya Arakawa</h4>
+                        <p class="mt-2">(*1984 in Hamamatsu, Japan) ist ein in Krefeld ansässiger Künstler. Er studierte Bildhauerei am Kanazawa College of Art sowie an der Kunstakademie Düsseldorf bei Rita McBride und schloss als Meisterschüler ab. Seine Praxis umfasst Skulptur, Zeichnung, Malerei und Performance und schließt kollaborative Arbeiten ein, in denen er als Sänger, Tänzer und Instrumentalist agiert. In seinen Arbeiten gehen choreografische Verfahren in räumliche Anordnungen über. Er entwickelt sogenannte Performance Scores, die als Objekte oder Handlungen erscheinen und zugleich eigenständige Werke und Grundlage für Aufführungen sind. Seine Arbeiten wurden u. a. in der Kunsthalle Düsseldorf, der Kunsthalle Münster, im Haus Esters und im Cabaret Voltaire gezeigt. 2024 zeigte er die Einzelausstellung <em>AKECHAN</em> im Pulverhaus beim Schlosstheater Moers.</p>
+                      </article>
+                      <article>
+                        <h4 class="font-semibold text-lg mb-2 text-gray-800">Marie Ogoshi</h4>
+                        <p class="mt-2">(*1984 in Kyoto, Japan) ist eine Künstlerin, deren Werke ortsspezifisch und konstruktivistisch geprägt sind. Ihre Werke sind in der Regel eng mit ihrem Ausstellungsort verbunden. Ihre Kunst erschließt neue Perspektiven, die sich deutlich von der alltäglichen Umgebung abheben. Sie studierte an der Kunstakademie Düsseldorf bei Professor Didier Vermeulen. Von 2018 bis 2022 war sie Vorstandsmitglied des Künstlervereins Markasten. Ihre Werke werden an verschiedenen Orten ausgestellt.</p>
+                      </article>
+                    </div>
+                  </div>
               </div>
           </div>
         </div>
@@ -295,9 +353,14 @@
     <section id="contact" class="fade-in content-section text-center">
       <h2 class="text-3xl font-semibold mb-4">Contact</h2>
       <p class="text-lg mb-2">For inquiries and collaborations, please contact Soya Arakawa.</p>
-      <p class="text-xl font-mono">
+      <p class="text-xl font-mono mb-4">
         <a href="mailto:soya@tacolv.org" class="text-gray-700 hover:text-D2691E transition">
             <i class="fas fa-envelope mr-2"></i>soya@tacolv.org
+        </a>
+      </p>
+      <p class="text-xl font-mono">
+        <a href="https://www.instagram.com/cookmal.mosa" target="_blank" rel="noopener" class="text-gray-700 hover:text-D2691E transition">
+            <i class="fab fa-instagram mr-2"></i>@cookmal.mosa
         </a>
       </p>
     </section>
@@ -336,11 +399,27 @@
       });
     });
 
-    // Lightbox functionality
+    // Language tab switching
     document.addEventListener('DOMContentLoaded', () => {
-      const lightboxTriggers = document.querySelectorAll('.js-lightbox-trigger');
-      if (lightboxTriggers.length === 0) return;
+      const langButtons = document.querySelectorAll('.lang-tab-btn');
+      const langPanels = document.querySelectorAll('.lang-panel');
+      langButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const lang = btn.getAttribute('data-lang');
+          langButtons.forEach(b => {
+            b.classList.toggle('active', b === btn);
+            b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+          });
+          langPanels.forEach(p => {
+            p.classList.toggle('hidden', p.getAttribute('data-lang-panel') !== lang);
+          });
+        });
+      });
+    });
 
+    // Lightbox functionality (event delegation so it also works on
+    // gallery images that get added dynamically after the page loads)
+    document.addEventListener('DOMContentLoaded', () => {
       const lightboxOverlay = document.createElement('div');
       lightboxOverlay.className = 'lightbox-overlay';
       document.body.appendChild(lightboxOverlay);
@@ -361,15 +440,15 @@
         setTimeout(() => { lightboxOverlay.innerHTML = ''; }, 300);
       };
 
-      lightboxTriggers.forEach(trigger => {
-        trigger.addEventListener('click', function(e) {
-          e.preventDefault();
-          const imageUrl = this.getAttribute('data-src');
-          const imageCaption = this.getAttribute('data-caption');
-          if (imageUrl) {
-            openLightbox(imageUrl, imageCaption);
-          }
-        });
+      document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('.js-lightbox-trigger');
+        if (!trigger) return;
+        e.preventDefault();
+        const imageUrl = trigger.getAttribute('data-src');
+        const imageCaption = trigger.getAttribute('data-caption');
+        if (imageUrl) {
+          openLightbox(imageUrl, imageCaption);
+        }
       });
 
       lightboxOverlay.addEventListener('click', (e) => {
@@ -381,6 +460,57 @@
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && lightboxOverlay.classList.contains('active')) {
           closeLightbox();
+        }
+      });
+    });
+
+    // Auto-populate the gallery from the food-photos/ folders in this
+    // GitHub repo. Drop a new image into food-photos/events, .../dishes,
+    // or .../menu and push — it will show up here automatically, no HTML
+    // edits needed.
+    document.addEventListener('DOMContentLoaded', () => {
+      const GH_OWNER = 'Soyadayo';
+      const GH_REPO = 'tacolv';
+      const GH_BRANCH = 'main';
+      const IMAGE_RE = /\.(jpe?g|png|webp|gif)$/i;
+
+      const galleries = [
+        { folder: 'events', containerId: 'gallery-events', label: 'Event View' },
+        { folder: 'dishes', containerId: 'gallery-dishes', label: 'Dish' },
+        { folder: 'menu', containerId: 'gallery-menu', label: 'Menu Sample' },
+      ];
+
+      const figureHTML = (src, caption, alt) => `
+        <figure>
+          <a href="#" class="js-lightbox-trigger" data-src="${src}" data-caption="${caption}">
+            <img src="${src}" alt="${alt}" loading="lazy">
+            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+          </a>
+        </figure>`;
+
+      galleries.forEach(async ({ folder, containerId, label }) => {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        try {
+          const apiUrl = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/food-photos/${folder}?ref=${GH_BRANCH}`;
+          const res = await fetch(apiUrl);
+          if (!res.ok) throw new Error(`GitHub API error ${res.status}`);
+          const files = await res.json();
+          const images = files
+            .filter(f => f.type === 'file' && IMAGE_RE.test(f.name))
+            .sort((a, b) => a.name.localeCompare(b.name));
+
+          if (images.length === 0) {
+            container.innerHTML = '<p class="text-sm text-gray-400 col-span-full">No photos yet.</p>';
+            return;
+          }
+
+          container.innerHTML = images
+            .map((img, i) => figureHTML(`food-photos/${folder}/${img.name}`, `${label} ${i + 1}`, `${label} ${i + 1}`))
+            .join('');
+        } catch (err) {
+          console.error(`Could not load gallery "${folder}":`, err);
+          container.innerHTML = '<p class="text-sm text-red-400 col-span-full">Could not load photos right now.</p>';
         }
       });
     });
